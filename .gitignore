@@ -1,6 +1,7 @@
 
 # Created by https://www.gitignore.io/api/node,angular,jetbrains,webstorm+all,visualstudiocode
 
+.directory
 ### Angular ###
 ## Angular ##
 # compiled output
