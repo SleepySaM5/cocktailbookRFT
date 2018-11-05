@@ -3,10 +3,14 @@
   "version": "0.0.1",
   "description": "A server for the cocktail book webapp.",
   "scripts": {
+	"build": "tsc",
+    "dev": "ts-node ./lib/server.ts",        
+    "start": "nodemon ./dist/server.js",
+    "prod": "npm run build && npm run start",
     "start": "npm run serve",
     "build": "npm run build-ts",
     "serve": "node dist/app.js",
-    "watch": "nodemon dist/server.js",
+    "watch": "nodemon dist/app.js",
     "test": "jest --forceExit --coverage --verbose",
     "watch-test": "npm run test -- --watchAll",
     "build-ts": "tsc",
@@ -17,10 +21,14 @@
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run serve-debug\""
   },
   "dependencies": {
-    "express": "^4.16.2",
+    "@types/body-parser": "^1.17.0",
+    "@types/mongodb": "^3.1.13",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
     "express-flash": "0.0.2",
     "express-session": "^1.15.6",
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.5",
+    "mongodb": "^2.2.16"
   },
   "devDependencies": {
     "@types/express": "^4.11.1",
