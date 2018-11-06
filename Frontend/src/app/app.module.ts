@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CocktailService } from './services/cocktail.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CocktailComponent } from './cocktail/cocktail.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CocktailComponent
   ],
   imports: [
+    MatCardModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule

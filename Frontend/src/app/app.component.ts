@@ -8,12 +8,13 @@ import { Cocktail } from './models/cocktail.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-app';
+  title = 'the Cocktail Book';
+  cocktails: Array<Cocktail>;
 
   constructor(service: CocktailService) {
     service.getAllCocktails().subscribe( (cocktails: Cocktail[]) => {
       cocktails.forEach((cocktail) => console.log(cocktail.name));
+      this.cocktails = cocktails;
     });
-
   }
 }
