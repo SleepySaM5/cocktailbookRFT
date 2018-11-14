@@ -1,0 +1,9 @@
+<div class="mat-app-background basic-container">
+  <h1>
+    {{ title }}
+  </h1>
+</div>
+
+<ng-container *ngFor="let cocktail of cocktails">
+  <app-cocktail class="cocktail" [cocktail]="cocktail"></app-cocktail>
+</ng-container>
