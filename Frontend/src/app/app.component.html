@@ -2,11 +2,14 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-
-  <ng-container *ngFor="let cocktail of cocktails">
-    <app-cocktail class="cocktail" [cocktail]="cocktail"></app-cocktail>
+<!--
+  <ng-container>
+    <app-cocktail-list class="cocktail-list" [cocktails]="cocktails"></app-cocktail-list>
   </ng-container>
-
+-->
+  <ng-container>
+    <app-cocktail-page class="cocktail-page" [cocktail]="cocktails[0]"></app-cocktail-page>
+  </ng-container>
 </div>
 
 
