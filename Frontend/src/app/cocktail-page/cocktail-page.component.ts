@@ -8,7 +8,7 @@ import { Cocktail } from '../models/cocktail.model';
 })
 export class CocktailPageComponent implements AfterViewInit {
 
-  myImgPath = 'assets/Bazs.png';
+  myImgPath = 'assets/ginTonic.jpeg';
 
   @Input()
   cocktail: Cocktail;

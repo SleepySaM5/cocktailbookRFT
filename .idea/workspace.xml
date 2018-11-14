@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/app/cocktail/cocktail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/cocktail/cocktail.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/app/cocktail/cocktail.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/cocktail/cocktail.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/app/cocktail/cocktail.component.spec.ts" beforeDir="false" />
@@ -58,18 +59,18 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="461" />
+          <entry key="html" value="475" />
           <entry key="json" value="132" />
           <entry key="scss" value="179" />
-          <entry key="ts" value="451" />
+          <entry key="ts" value="465" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="461" />
+          <entry key="HTML" value="475" />
           <entry key="JSON" value="132" />
           <entry key="SCSS" value="179" />
-          <entry key="TypeScript" value="451" />
+          <entry key="TypeScript" value="465" />
         </counts>
       </usages-collector>
     </session>
@@ -105,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+              <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -126,17 +127,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="53" lean-forward="true" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
+            <state relative-caret-position="150">
+              <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+            <state relative-caret-position="135">
+              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -198,10 +199,10 @@
         <option value="$PROJECT_DIR$/Frontend/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/Frontend/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/Mock_DB/db.json" />
-        <option value="$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.ts" />
         <option value="$PROJECT_DIR$/Frontend/src/index.html" />
-        <option value="$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.html" />
         <option value="$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.scss" />
+        <option value="$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.html" />
+        <option value="$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.ts" />
       </list>
     </option>
   </component>
@@ -316,12 +317,12 @@
       <updated>1540668602692</updated>
       <workItem from="1540668614583" duration="4789000" />
       <workItem from="1541445447096" duration="5878000" />
-      <workItem from="1542220829251" duration="9774000" />
+      <workItem from="1542220829251" duration="10211000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20441000" />
+    <option name="totallyTimeSpent" value="20878000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="732" extended-state="6" />
@@ -587,6 +588,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/src/app/cocktail/cocktail.component.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -596,22 +604,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="53" lean-forward="true" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
+        <state relative-caret-position="150">
+          <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/src/app/cocktail-page/cocktail-page.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        <state relative-caret-position="135">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
         </state>
       </provider>
     </entry>
