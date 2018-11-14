@@ -1,0 +1,45 @@
+{
+  "name": "cocktail-book-server",
+  "version": "0.0.1",
+  "description": "A server for the cocktail book webapp.",
+  "scripts": {
+	"build": "tsc",
+    "dev": "ts-node ./lib/server.ts",        
+    "start": "nodemon ./dist/server.js",
+    "prod": "npm run build && npm run start",
+    "start": "npm run serve",
+    "build": "npm run build-ts",
+    "serve": "node dist/app.js",
+    "watch": "nodemon dist/app.js",
+    "test": "jest --forceExit --coverage --verbose",
+    "watch-test": "npm run test -- --watchAll",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "debug": "npm run build && npm run watch-debug",
+    "serve-debug": "nodemon --inspect dist/server.js",
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run serve-debug\""
+  },
+  "dependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/mongodb": "^3.1.13",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-flash": "0.0.2",
+    "express-session": "^1.15.6",
+    "lodash": "^4.17.5",
+    "mongodb": "^2.2.16"
+  },
+  "devDependencies": {
+    "@types/express": "^4.11.1",
+    "@types/express-session": "^1.15.8",
+    "@types/lodash": "^4.14.91",
+    "jest": "^22.0.4",
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.13.0",
+    "ts-jest": "^22.0.4",
+    "ts-node": "^5.0.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.2"
+  }
+}
