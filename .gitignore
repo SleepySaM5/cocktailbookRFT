@@ -5,6 +5,7 @@
 ### Angular ###
 ## Angular ##
 # compiled output
+**/workspace.xml
 /dist
 /tmp
 /app/**/*.js
@@ -15,7 +16,7 @@
 /bower_components
 
 # IDEs and editors
-/.idea
+**/*/.idea
 
 # misc
 /.sass-cache

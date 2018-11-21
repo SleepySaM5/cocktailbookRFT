@@ -1,6 +1,35 @@
 :host {
-  img {
+  mat-card {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 1em ;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: row;
+    p {
+      flex-grow: 3;
+    }
+
+    img {
+      margin: 0;
+      padding: 0.2em 1em;
+      width: auto;
+      height: auto;
+      max-width: 300px;
+    }
+  }
+
+
+
+  mat-card-content {
+    border-bottom: rgba(15, 13, 26, 0.15) 1px solid;
+  }
+
+  mat-card-actions {
     float: right;
-    width: 30%;
   }
 }
+
+

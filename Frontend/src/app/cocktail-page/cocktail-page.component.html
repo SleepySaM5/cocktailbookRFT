@@ -1,6 +1,6 @@
 <mat-card class="mat-elevation-z4">
 
-  <mat-card-header>
+  <mat-card-header class="card-header">
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{cocktail.name}}</mat-card-title>
     <mat-card-actions>
@@ -8,17 +8,15 @@
       <button mat-button>SHARE</button>
     </mat-card-actions>
   </mat-card-header>
-  <mat-card-content>
+  <mat-card-content class="description">
+    <p class="cocktail-description">{{cocktail.description}}</p>
     <img mat-card-image [src]="myImgPath" [alt]="cocktail.imgAlt">
-    <p>{{cocktail.description}}</p>
   </mat-card-content>
   <mat-card-content>
-    <mat-divider></mat-divider>
     <mat-card-subtitle>Ingredients</mat-card-subtitle>
       <mat-list *ngFor="let ingredient of cocktail.ingredients">
         <mat-list-item>{{ingredient}}</mat-list-item>
       </mat-list>
-    <mat-divider></mat-divider>
     <mat-card-subtitle>Making</mat-card-subtitle>
     <mat-list *ngFor="let instructions of cocktail.instructions">
       <mat-list-item>{{instructions}}</mat-list-item>
