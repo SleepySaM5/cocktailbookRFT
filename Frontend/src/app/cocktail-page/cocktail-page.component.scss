@@ -8,6 +8,7 @@
   .description {
     display: flex;
     flex-direction: row;
+    border-top: rgba(15, 13, 26, 0.15) 1px solid;
     p {
       flex-grow: 3;
     }
@@ -25,11 +26,9 @@
 
   mat-card-content {
     border-bottom: rgba(15, 13, 26, 0.15) 1px solid;
+    padding: 1em;
   }
 
-  mat-card-actions {
-    float: right;
-  }
 }
 
 

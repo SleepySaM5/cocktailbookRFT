@@ -1,9 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+* {
+  font-family: Roboto, Arial, sans-serif;
+}
 
 .card-header {
+  align-items: center;
+
+  .card-header-action {
+    display: flex;
+    align-items: center;
+  }
+}
+.card-header-text {
   font-family: 'Playfair Display', serif;
+}
+
+
+
+
+
+
+.mat-card-header-text {
+   flex-grow: 3;
+}
+
+.like-button:before {
+    content: 'stars';
+    font-family: 'Material Icons', 'Georgia';
 }
 
 .all-wrap {
@@ -31,4 +56,5 @@ main {
     display: block;
   }
 }
+
 

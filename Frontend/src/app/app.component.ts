@@ -14,6 +14,7 @@ export class AppComponent {
   constructor(service: CocktailService) {
     service.getAllCocktails().subscribe( (cocktails: Cocktail[]) => {
       cocktails.forEach((cocktail) => console.log(cocktail.name));
+      console.log('got the cocktails: ', cocktails);
       this.cocktails = cocktails;
     });
   }

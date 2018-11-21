@@ -1,11 +1,13 @@
 <mat-card class="mat-elevation-z4">
 
-  <mat-card-header class="card-header">
+  <mat-card-header  class="card-header">
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{cocktail.name}}</mat-card-title>
+    <mat-card-title class="card-header-text">{{cocktail.name | titlecase}}</mat-card-title>
     <mat-card-subtitle>Subtitle</mat-card-subtitle>
-    <mat-card-actions>
+    <mat-card-actions class="card-header-action">
+      <mat-icon>stars</mat-icon>
       <button mat-button>LIKE</button>
+      <mat-icon>share</mat-icon>
       <button mat-button>SHARE</button>
     </mat-card-actions>
   </mat-card-header>
