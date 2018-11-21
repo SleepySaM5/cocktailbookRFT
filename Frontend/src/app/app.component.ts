@@ -7,14 +7,13 @@ import { Cocktail } from './models/cocktail.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'the Cocktail Book';
-  cocktails: Array<Cocktail>;
 
-  constructor(service: CocktailService) {
-    service.getAllCocktails().subscribe( (cocktails: Cocktail[]) => {
-      cocktails.forEach((cocktail) => console.log(cocktail.name));
-      this.cocktails = cocktails;
-    });
+export class AppComponent {
+
+  constructor() {}
+
+  toggleSidenav(): void {
+
   }
+
 }

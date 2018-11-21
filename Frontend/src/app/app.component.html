@@ -1,13 +1,20 @@
-<div class="mat-app-background basic-container">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+<mat-sidenav-container class="all-wrap" fullscreen>
 
-  <ng-container *ngFor="let cocktail of cocktails">
-    <app-cocktail class="cocktail" [cocktail]="cocktail"></app-cocktail>
-  </ng-container>
+  <mat-sidenav #sidenav>
+    <mat-list>
+      <mat-list-item [routerLink]="['/']" (click)="sidenav.close()">Home</mat-list-item>
+      <mat-list-item [routerLink]="['/cocktail']" (click)="sidenav.close()">Cocktail</mat-list-item>
+    </mat-list>
+  </mat-sidenav>
 
-</div>
+  <div class="page-wrap" style="border: thin dotted midnightblue">
+    <app-header (sidenavButtonClick)="sidenav.open()"></app-header>
 
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
 
-<router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </div>
+
+</mat-sidenav-container>
