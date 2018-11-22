@@ -11,17 +11,26 @@
     </mat-card-actions>
   </mat-card-header>
   <mat-card-content class="description">
-    <p class="cocktail-description">{{cocktail.description}}</p>
+    <p>{{cocktail.description}}</p>
     <img mat-card-image [src]="myImgPath" [alt]="cocktail.imgAlt">
   </mat-card-content>
-  <mat-card-content>
+  <mat-card-content class="ingredients">
     <mat-card-subtitle>Ingredients</mat-card-subtitle>
-      <mat-list *ngFor="let ingredient of cocktail.ingredients">
-        <mat-list-item>{{ingredient}}</mat-list-item>
-      </mat-list>
+      <mat-selection-list #ing>
+        <mat-list-option  *ngFor="let ingredient of cocktail.ingredients; let i = index">
+          {{i + 1}}. {{ingredient}}
+        </mat-list-option>
+      </mat-selection-list>
+    <mat-card-actions>
+      <button  mat-button *ngIf="ing.selectedOptions.selected.length > 0 ">
+        Search with the selected ingredients
+      </button>
+    </mat-card-actions>
+  </mat-card-content>
+  <mat-card-content class="making">
     <mat-card-subtitle>Making</mat-card-subtitle>
-    <mat-list *ngFor="let instructions of cocktail.instructions">
-      <mat-list-item>{{instructions}}</mat-list-item>
+    <mat-list *ngFor="let instructions of cocktail.instructions;  let i = index">
+      <mat-list-item>{{i + 1}}. {{instructions}}</mat-list-item>
     </mat-list>
   </mat-card-content>
 

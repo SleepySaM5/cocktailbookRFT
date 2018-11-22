@@ -8,10 +8,47 @@
   "profile": { "name": "typicode" },
 
   "cocktails": [
-  	{ "name": "gintonic" , "ingredients": ["gin","tonic"] , "imgPath": "http://lorempixel.com/200/300/food", "imgAlt": "keeep", "instructions" : ["In a highball glass filled with ice cubes, pour the gin then top it with tonic.","Stir well.","Garnish with a lime wedge."] , "description" : "A gin and tonic is a highball cocktail made with gin and tonic water poured over ice. It is usually garnished with a slice or wedge of lime. The amount of gin varies according to taste. Suggested ratios of gin to tonic are between 1:1 and 1:3."},
-  	{ "name": "vbk" , "ingredients": ["v","b","k"] , "imgPath": "http://lorempixel.com/200/300/food", "imgAlt": "vbk kep"},
-    { "name": "The Last Word", "ingredients": [ "lime", "Gin", "Chartreuse", "Maraschino Liqueur" ] , "imgPath": "http://lorempixel.com/640/480/food"},
-    { "name": "Old Fashioned", "ingredients": [ "Bourbon", "Sugar Cube", "Angostura Bitters" ] ,"imgPath": "http://lorempixel.com/640/480/food"},
-    { "name": "Manhattan", "ingredients": [ "Rye Whiskey", "Sweet Vermouth", "Angostura Bitters" ] , "imgPath": "http://lorempixel.com/640/480/food"}
+    {
+      "name": "gintonic",
+      "ingredients": [ "gin", "tonic", "lime wedge", "imgredient#4", "imgredient#4", "imgredient#4", "imgredient#4" ],
+      "imgPath": "http://lorempixel.com/200/300/food",
+      "imgAlt": "keeep",
+      "instructions": [ "In a highball glass filled with ice cubes, pour the gin then top it with tonic.", "Stir well.", "Garnish with a lime wedge.","Lorem ipsum dolor sit amet, consectetur adipiscing elit","sed do eiusmod tempor incididunt ut labore et dolore magna aliqua" ],
+      "description": "A gin and tonic is a highball cocktail made with gin and tonic water poured over ice. It is usually garnished with a slice or wedge of lime. The amount of gin varies according to taste. Suggested ratios of gin to tonic are between 1:1 and 1:3."
+    },
+    {
+      "name": "vbk",
+      "ingredients": [ "v", "b", "k" ],
+      "imgPath": "http://lorempixel.com/200/300/food",
+      "imgAlt": "vbk kep"
+    },
+    {
+      "name": "The Last Word",
+      "ingredients": [
+        "lime",
+        "Gin",
+        "Chartreuse",
+        "Maraschino Liqueur"
+      ],
+      "imgPath": "http://lorempixel.com/640/480/food"
+    },
+    {
+      "name": "Old Fashioned",
+      "ingredients": [
+        "Bourbon",
+        "Sugar Cube",
+        "Angostura Bitters"
+      ],
+      "imgPath": "http://lorempixel.com/640/480/food"
+    },
+    {
+      "name": "Manhattan",
+      "ingredients": [
+        "Rye Whiskey",
+        "Sweet Vermouth",
+        "Angostura Bitters"
+      ],
+      "imgPath": "http://lorempixel.com/640/480/food"
+    }
   ]  
 } 

@@ -11,6 +11,8 @@
     border-top: rgba(15, 13, 26, 0.15) 1px solid;
     p {
       flex-grow: 3;
+      padding-left: 16px;
+      font-size: 16px;
     }
 
     img {
@@ -22,11 +24,30 @@
     }
   }
 
-
-
   mat-card-content {
-    border-bottom: rgba(15, 13, 26, 0.15) 1px solid;
     padding: 1em;
+  }
+
+  .ingredients {
+    mat-list-option {
+      height: 20px;
+    }
+    mat-card-actions {
+      text-align: right;
+    }
+
+    border-bottom: rgba(15, 13, 26, 0.15) 1px solid;
+    border-top: rgba(15, 13, 26, 0.15) 1px solid;
+  }
+
+  .making {
+    mat-list-item {
+      height: 20px;
+    }
+  }
+
+  mat-card-subtitle {
+    font-size: 16px;
   }
 
 }
