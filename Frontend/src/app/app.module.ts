@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { CocktailListComponent } from './cocktail-list/cocktail-list.component';
 import { CocktailPageComponent } from './cocktail-page/cocktail-page.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { CocktailBrowseComponent } from './cocktail-browse/cocktail-browse.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatDividerModule } from '@angular/material/divider';
     FooterComponent,
     HomeComponent,
     CocktailListComponent,
-    CocktailPageComponent
+    CocktailPageComponent,
+    CocktailBrowseComponent
   ],
   imports: [
     BrowserAnimationsModule,

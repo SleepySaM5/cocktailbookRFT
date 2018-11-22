@@ -1,6 +1,6 @@
 
-<ul class="cocktail">
-  <li *ngFor="let cocktail of cocktails">
-    <app-cocktail class="cocktail" [cocktail]="cocktail"></app-cocktail>
-  </li>
-</ul>
+<div class="cocktail-list-display">
+  <div *ngFor="let cocktail of cocktails" class="cocktail-card">
+      <app-cocktail class="cocktail" [cocktail]="cocktail"></app-cocktail>
+  </div>
+</div>

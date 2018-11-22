@@ -1,13 +1,9 @@
 :host {
   mat-card {
-    min-width: 200px;
-    max-width: 300px;
+    min-width: 250px;
+    max-width: 400px;
 
-    min-height: 200px;
-    display: inline-block;
+    min-height: 250px;
   }
 
-  mat-card-actions {
-    float: right;
-  }
 }

@@ -10,6 +10,9 @@ export class CocktailComponent implements OnInit {
   @Input()
   cocktail: Cocktail;
 
+
+  myImgPath = 'assets/ginTonic.jpeg';
+
   constructor() { }
 
   ngOnInit() {

@@ -3,7 +3,6 @@
   <mat-card-header  class="card-header">
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title class="card-header-text">{{cocktail.name | titlecase}}</mat-card-title>
-    <mat-card-subtitle>Subtitle</mat-card-subtitle>
     <mat-card-actions class="card-header-action">
       <mat-icon>stars</mat-icon>
       <button mat-button>LIKE</button>
@@ -11,7 +10,7 @@
       <button mat-button>SHARE</button>
     </mat-card-actions>
   </mat-card-header>
-  <img mat-card-image [src]="cocktail.imgPath" [alt]="cocktail.imgAlt">
+  <img mat-card-image [src]="myImgPath" [alt]="cocktail.imgAlt">
   <mat-card-content>{{cocktail.ingredients}}</mat-card-content>
 
 </mat-card>

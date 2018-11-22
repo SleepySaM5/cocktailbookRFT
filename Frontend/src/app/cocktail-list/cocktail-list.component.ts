@@ -11,6 +11,7 @@ export class CocktailListComponent implements AfterViewInit {
   @Input()
   cocktails: Cocktail[];
 
+
   ngAfterViewInit(): void {
     console.log('afterviewinit: ', this);
   }
