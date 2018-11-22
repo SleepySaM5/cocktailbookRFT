@@ -7,21 +7,24 @@
 
 .card-header {
   align-items: center;
+  display: flex;
+
+  .card-header-text {
+    display: flex;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
 
   .card-header-action {
     display: flex;
     align-items: center;
+    margin: 0;
+    padding: 0;
   }
 }
-.card-header-text {
-  font-family: 'Playfair Display', serif;
-  align-items: center;
-}
-
-
-
-
-
 
 .mat-card-header-text {
    flex-grow: 3;
