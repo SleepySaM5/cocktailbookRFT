@@ -9,7 +9,7 @@ import { CocktailComponent } from './cocktail/cocktail.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
-import { MatSidenavModule } from '@angular/material';
+import {MatInputModule, MatSidenavModule} from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,6 +20,9 @@ import { CocktailListComponent } from './cocktail-list/cocktail-list.component';
 import { CocktailPageComponent } from './cocktail-page/cocktail-page.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { CocktailBrowseComponent } from './cocktail-browse/cocktail-browse.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,11 +43,16 @@ import { CocktailBrowseComponent } from './cocktail-browse/cocktail-browse.compo
     MatSidenavModule,
     MatListModule,
     MatIconModule,
+    MatInputModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     CocktailService

@@ -1,0 +1,12 @@
+:host {
+  .browse-page {
+    display: flex;
+    flex-direction: row;
+    .search {
+      flex-grow: 2;
+    }
+    .results {
+      flex-grow: 8;
+    }
+  }
+}
