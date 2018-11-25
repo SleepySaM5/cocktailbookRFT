@@ -10,10 +10,21 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  username: string;
+  password: string;
+
   ngOnInit() {
   }
 
   fbLogin() {
     this.router.navigate(['/']);
+  }
+
+  login(): void {
+    if (this.username === 'admin' && this.password === 'admin') {
+      this.router.navigate(['']);
+    } else {
+      alert('Invalid credentials');
+    }
   }
 }
