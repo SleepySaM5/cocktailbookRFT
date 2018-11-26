@@ -7,7 +7,7 @@ export const CocktailSchema = new Schema({
         required: 'Enter a cocktail name'
     },
     ingredientList: {
-        type: String
+        type: [String]
     },
     description:{
       type : String

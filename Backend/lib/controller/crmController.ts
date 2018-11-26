@@ -50,5 +50,20 @@ export class CocktailController {
             }
             res.json({ message: 'Successfully deleted cocktail!'});
         });
+
+
+    }
+    public filterCocktails (req: Request, res: Response) {
+        console.log("filtering : ", req.query);
+        if(req.query && req.query.ingredients){
+            let ingredients = req.query.ingredients.split(',').map((ingredient) => (ingredient.trim()));
+            console.log("ingredients: ", ingredients);
+            Cocktail.find({ ingredientList:{$all:ingredients}}, (err, cocktail) =>{
+                if(err){
+                    res.send(err);
+                }
+                res.json(cocktail);
+            })
+        }
     }
 }

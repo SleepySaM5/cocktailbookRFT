@@ -17,11 +17,12 @@ export class Routes {
             .post(this.cocktailController.addNewCocktail);
         app.route('/cocktail')
             .get(this.cocktailController.getCocktails);
+        app.route('/cocktail/filter')
+            .get(this.cocktailController.filterCocktails)
         app.route('/cocktail/:cocktailID')
             .get(this.cocktailController.getCocktailWithID)
             .put(this.cocktailController.updateCocktail)
             .delete(this.cocktailController.deleteCocktail)
-
 
     }
 }
