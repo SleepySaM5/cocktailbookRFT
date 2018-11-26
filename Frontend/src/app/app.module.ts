@@ -26,10 +26,12 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatChipsModule } from '@angular/material/chips';
 
 
+
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
+import { NewCocktailComponent } from './new-cocktail/new-cocktail.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { MatInputModule } from '@angular/material/input';
     CocktailListComponent,
     CocktailPageComponent,
     CocktailBrowseComponent,
-    LoginComponent
+    LoginComponent,
+    NewCocktailComponent
   ],
   imports: [
     BrowserAnimationsModule,
