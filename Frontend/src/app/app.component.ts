@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CocktailService } from './services/cocktail.service';
 import { Cocktail } from './models/cocktail.model';
-import {Ingredient} from './models/ingredient.model';
-import {FormControl} from '@angular/forms';
+import { Ingredient } from './models/ingredient.model';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
