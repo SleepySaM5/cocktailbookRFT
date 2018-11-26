@@ -4,12 +4,14 @@ import { CocktailComponent } from './cocktail/cocktail.component';
 import { HomeComponent } from './home/home.component';
 import { CocktailBrowseComponent } from './cocktail-browse/cocktail-browse.component';
 import { CocktailPageComponent } from './cocktail-page/cocktail-page.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'cocktail', component: CocktailComponent },
   { path: 'browse', component: CocktailBrowseComponent },
-  { path: 'page', component: CocktailPageComponent }
+  { path: 'page', component: CocktailPageComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
