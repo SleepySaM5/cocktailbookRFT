@@ -28,24 +28,13 @@ export class CocktailBrowseComponent implements AfterViewInit {
   removable = true;
   addOnBlur = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruitCtrl = new FormControl();
-  filteredFruits: Observable<string[]>;
+  ingredientCtrl = new FormControl();
+  filteredIngredients: Observable<string[]>;
   activeIngredients: string[] = [];
-  allIngredients: string[] = [''];
+  allIngredients: string[] = [];
 
-  @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
+  @ViewChild('ingredientInput') ingredientInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
-
-
-  ngAfterViewInit() {
-    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
-      startWith(null),
-      map((ingredient: string | null) => ingredient ? this._filter(ingredient) : this.allIngredients.slice()));
-
-    this.ingredients.forEach(ing => {
-      this.allIngredients.push(ing.name);
-    });
-  }
 
   constructor(cocktailService: CocktailService, ingredientService: CocktailService) {
     cocktailService.getAllCocktails().subscribe((cocktails: Cocktail[]) => {
@@ -55,9 +44,16 @@ export class CocktailBrowseComponent implements AfterViewInit {
     });
     ingredientService.getAllIngredients().subscribe((ingredients: Ingredient[]) => {
       ingredients.forEach((ingredient) => console.log(ingredient.name));
+      ingredients.forEach(ing => this.allIngredients.push(ing.name));
       console.log('got the ingredients: ', ingredients);
       this.ingredients = ingredients;
     });
+    this.filteredIngredients = this.ingredientCtrl.valueChanges.pipe(
+      startWith(null),
+      map((ingredient: string | null) => ingredient ? this._filter(ingredient) : this.allIngredients.slice()));
+  }
+
+  ngAfterViewInit() {
   }
 
   add(event: MatChipInputEvent): void {
@@ -77,7 +73,7 @@ export class CocktailBrowseComponent implements AfterViewInit {
         input.value = '';
       }
 
-      this.fruitCtrl.setValue(null);
+      this.ingredientCtrl.setValue(null);
     }
   }
 
@@ -91,14 +87,14 @@ export class CocktailBrowseComponent implements AfterViewInit {
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.activeIngredients.push(event.option.viewValue);
-    this.fruitInput.nativeElement.value = '';
-    this.fruitCtrl.setValue(null);
+    this.ingredientInput.nativeElement.value = '';
+    this.ingredientCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allIngredients.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+    return this.allIngredients.filter(ing => ing.toLowerCase().indexOf(filterValue) === 0);
   }
 }
 

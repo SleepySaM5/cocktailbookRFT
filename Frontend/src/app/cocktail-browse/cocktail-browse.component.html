@@ -1,20 +1,23 @@
 <ng-container>
   <div class="browse-page">
     <div class="search">
-      <mat-form-field class="example-chip-list">
+      <h2>
+        Find Cocktails
+      </h2>
+      <mat-form-field class="ingredient-chip-list">
         <mat-chip-list #chipList>
           <mat-chip
-            *ngFor="let fruit of activeIngredients"
+            *ngFor="let ing of activeIngredients"
             [selectable]="selectable"
             [removable]="removable"
-            (removed)="remove(fruit)">
-            {{fruit}}
+            (removed)="remove(ing)">
+            {{ing}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
           <input
-            placeholder="New fruit..."
-            #fruitInput
-            [formControl]="fruitCtrl"
+            placeholder="Add ingredient..."
+            #ingredientInput
+            [formControl]="ingredientCtrl"
             [matAutocomplete]="auto"
             [matChipInputFor]="chipList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
@@ -22,22 +25,20 @@
             (matChipInputTokenEnd)="add($event)">
         </mat-chip-list>
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-          <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
-            {{fruit}}
+          <mat-option *ngFor="let ing of filteredIngredients | async" [value]="ing">
+            {{ing}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <!--<cdk-virtual-scroll-viewport [itemSize]="ingredients.length" class="search-viewport">
-        <mat-selection-list>
-          <mat-list-option *cdkVirtualFor="let item of ingredients" class="search-list-item">
-            {{item.name}}
-          </mat-list-option>
-        </mat-selection-list>
-      </cdk-virtual-scroll-viewport>-->
+      <p>
+        <button mat-button>Search</button>
+      </p>
     </div>
-    <p *ngFor="let ing of allIngredients">  {{ing }} </p>  vel
     <div class="results">
       <app-cocktail-list class="cocktail-list" [cocktails]="cocktails"></app-cocktail-list>
+      <button mat-button class="new-cocktail">
+        <mat-icon>add_circle</mat-icon>
+      </button>
     </div>
   </div>
 </ng-container>
