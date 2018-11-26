@@ -4,6 +4,11 @@
     flex-direction: row;
     .search {
       flex-grow: 2;
+      .search-viewport {
+        min-width: 200px;
+        min-height: 400px;
+
+      }
     }
     .results {
       flex-grow: 8;
