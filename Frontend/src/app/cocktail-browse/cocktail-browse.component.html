@@ -1,14 +1,41 @@
 <ng-container>
   <div class="browse-page">
     <div class="search">
-      <cdk-virtual-scroll-viewport [itemSize]="ingredients.length" class="search-viewport">
+      <mat-form-field class="example-chip-list">
+        <mat-chip-list #chipList>
+          <mat-chip
+            *ngFor="let fruit of activeIngredients"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(fruit)">
+            {{fruit}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="New fruit..."
+            #fruitInput
+            [formControl]="fruitCtrl"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+            {{fruit}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <!--<cdk-virtual-scroll-viewport [itemSize]="ingredients.length" class="search-viewport">
         <mat-selection-list>
           <mat-list-option *cdkVirtualFor="let item of ingredients" class="search-list-item">
             {{item.name}}
           </mat-list-option>
         </mat-selection-list>
-      </cdk-virtual-scroll-viewport>
+      </cdk-virtual-scroll-viewport>-->
     </div>
+    <p *ngFor="let ing of allIngredients">  {{ing }} </p>  vel
     <div class="results">
       <app-cocktail-list class="cocktail-list" [cocktails]="cocktails"></app-cocktail-list>
     </div>
