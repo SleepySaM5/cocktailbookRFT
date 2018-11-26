@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
     this.sidenavButtonClick.emit();
   }
 
-  openDialog() {
+  openDialog(): void {
     this.dialog.open(LoginComponent);
   }
 }
