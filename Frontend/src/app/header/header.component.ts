@@ -1,4 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +10,16 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 export class HeaderComponent implements OnInit {
   @Output()
   public sidenavButtonClick = new EventEmitter<void>();
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
   onSidenavButtonClick(): void {
     this.sidenavButtonClick.emit();
+  }
+
+  openDialog(): void {
+    this.dialog.open(LoginComponent);
   }
 }

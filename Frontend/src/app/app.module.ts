@@ -24,6 +24,7 @@ import { CocktailBrowseComponent } from './cocktail-browse/cocktail-browse.compo
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 import { LoginComponent } from './login/login.component';
@@ -65,7 +66,8 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     ReactiveFormsModule,
     ScrollingModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDialogModule
   ],
   providers: [
     CocktailService
