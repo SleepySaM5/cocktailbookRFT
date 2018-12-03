@@ -44,6 +44,9 @@ import { MatInputModule } from '@angular/material/input';
     CocktailBrowseComponent,
     LoginComponent
   ],
+  entryComponents: [
+    LoginComponent
+  ],
   imports: [
     BrowserAnimationsModule,
     MatCardModule,
