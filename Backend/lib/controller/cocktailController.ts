@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { CocktailSchema } from '../model/crmModel';
+import { CocktailSchema } from '../model/cocktailModel';
 import { Request, Response } from 'express';
 
 const Cocktail = mongoose.model('Cocktail', CocktailSchema);
