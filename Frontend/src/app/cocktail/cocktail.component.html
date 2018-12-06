@@ -2,7 +2,7 @@
 
   <mat-card-header class="card-header">
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
-    <mat-card-title style="margin-bottom: 6px" class="card-header-text">{{cocktail.name | titlecase}}</mat-card-title>
+    <mat-card-title style="margin-bottom: 6px" class="card-header-text">{{cocktail.cocktailName | titlecase}}</mat-card-title>
     <mat-card-actions class="card-header-action">
       <mat-icon>stars</mat-icon>
       <button mat-button>LIKE</button>
@@ -11,6 +11,6 @@
     </mat-card-actions>
   </mat-card-header>
   <img mat-card-image [src]="myImgPath" [alt]="cocktail.imgAlt">
-  <mat-card-content>{{cocktail.ingredients}}</mat-card-content>
+  <mat-card-content>{{cocktail.ingredientList}}</mat-card-content>
 
 </mat-card>

@@ -38,16 +38,16 @@ export class CocktailBrowseComponent implements AfterViewInit {
 
   constructor(cocktailService: CocktailService, ingredientService: CocktailService) {
     cocktailService.getAllCocktails().subscribe((cocktails: Cocktail[]) => {
-      cocktails.forEach((cocktail) => console.log(cocktail.name));
+      cocktails.forEach((cocktail) => console.log(cocktail.cocktailName));
       console.log('got the cocktails: ', cocktails);
       this.cocktails = cocktails;
     });
-    ingredientService.getAllIngredients().subscribe((ingredients: Ingredient[]) => {
+    /*ingredientService.getAllIngredients().subscribe((ingredients: Ingredient[]) => {
       ingredients.forEach((ingredient) => console.log(ingredient.name));
       ingredients.forEach(ing => this.allIngredients.push(ing.name));
-      console.log('got the ingredients: ', ingredients);
+      console.log('got the ingredientList: ', ingredients);
       this.ingredients = ingredients;
-    });
+    });*/
     this.filteredIngredients = this.ingredientCtrl.valueChanges.pipe(
       startWith(null),
       map((ingredient: string | null) => ingredient ? this._filter(ingredient) : this.allIngredients.slice()));

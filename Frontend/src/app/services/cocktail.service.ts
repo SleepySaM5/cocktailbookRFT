@@ -7,15 +7,15 @@ import { Ingredient } from '../models/ingredient.model';
 @Injectable()
 export class CocktailService {
 
-  readonly URL = 'http://localhost:3000';
+  readonly URL = 'https://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
   getAllCocktails(): Observable<Cocktail[]> {
-    return this.http.get<Cocktail[]>(this.URL + '/cocktails');
+    return this.http.get<Cocktail[]>(this.URL + '/cocktail');
   }
 
   getAllIngredients(): Observable<Ingredient[]> {
-    return this.http.get<Ingredient[]>(this.URL + '/ingredients');
+    return this.http.get<Ingredient[]>(this.URL + '/ingredientList');
   }
 }
