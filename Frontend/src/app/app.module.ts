@@ -27,10 +27,10 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 
 
-import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
+import {UserService} from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -41,8 +41,7 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     CocktailListComponent,
     CocktailPageComponent,
-    CocktailBrowseComponent,
-    LoginComponent
+    CocktailBrowseComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -70,7 +69,8 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogModule
   ],
   providers: [
-    CocktailService
+    CocktailService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
