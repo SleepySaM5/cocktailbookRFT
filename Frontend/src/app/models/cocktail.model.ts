@@ -1,6 +1,7 @@
 export interface Cocktail {
-    name: string;
-    ingredients: Array<string>;
+    cocktailName: string;
+    ingredientList: Array<string>;
+    description: string;
     imgPath?: string;
     imgAlt?: string;
 }

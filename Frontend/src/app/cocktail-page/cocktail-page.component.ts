@@ -18,7 +18,7 @@ export class CocktailPageComponent implements AfterViewInit {
 
   constructor(cocktailService: CocktailService) {
   cocktailService.getAllCocktails().subscribe( (cocktails: Cocktail[]) => {
-      cocktails.forEach((cocktail) => console.log(cocktail.name));
+      cocktails.forEach((cocktail) => console.log(cocktail.cocktailName));
       console.log('got the cocktails: ', cocktails);
       this.cocktail = cocktails[0];
     });
