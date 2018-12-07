@@ -33,5 +33,10 @@
       <mat-list-item>{{i + 1}}. {{instructions}}</mat-list-item>
     </mat-list>
   </mat-card-content>
-
 </mat-card>
+
+<div>
+  <div *ngFor="let comment of commentss" class="comment-box">
+    <app-cocktail class="comment" [comment]="comment"></app-cocktail>
+  </div>
+</div>

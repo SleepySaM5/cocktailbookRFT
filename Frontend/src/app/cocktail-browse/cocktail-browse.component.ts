@@ -42,12 +42,12 @@ export class CocktailBrowseComponent implements AfterViewInit {
       console.log('got the cocktails: ', cocktails);
       this.cocktails = cocktails;
     });
-    /*ingredientService.getAllIngredients().subscribe((ingredients: Ingredient[]) => {
+    ingredientService.getAllIngredients().subscribe((ingredients: Ingredient[]) => {
       ingredients.forEach((ingredient) => console.log(ingredient.name));
       ingredients.forEach(ing => this.allIngredients.push(ing.name));
       console.log('got the ingredientList: ', ingredients);
       this.ingredients = ingredients;
-    });*/
+    });
     this.filteredIngredients = this.ingredientCtrl.valueChanges.pipe(
       startWith(null),
       map((ingredient: string | null) => ingredient ? this._filter(ingredient) : this.allIngredients.slice()));

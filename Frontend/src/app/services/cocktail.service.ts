@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Cocktail } from '../models/cocktail.model';
 import { Ingredient } from '../models/ingredient.model';
+import { Comment } from '../models/comment.model';
 
 @Injectable()
 export class CocktailService {
@@ -17,5 +18,9 @@ export class CocktailService {
 
   getAllIngredients(): Observable<Ingredient[]> {
     return this.http.get<Ingredient[]>(this.URL + '/ingredientList');
+  }
+
+  getAllComments(): Observable<Comment[]> {
+    return this.http.get<Comment[]>(this.URL + '/comments');
   }
 }
