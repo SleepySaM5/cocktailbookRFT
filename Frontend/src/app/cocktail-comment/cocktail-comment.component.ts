@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Comment } from '../models/comment.model';
+import {I18nPluralPipe} from "@angular/common";
 
 
 @Component({
@@ -9,6 +10,7 @@ import { Comment } from '../models/comment.model';
 })
 export class CocktailCommentComponent implements OnInit {
 
+  @Input()
   comment: Comment;
 
   constructor() {

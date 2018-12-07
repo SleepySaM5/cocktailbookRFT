@@ -22,7 +22,7 @@ export class CocktailPageComponent implements AfterViewInit {
   cocktailService.getAllCocktails().subscribe( (cocktails: Cocktail[]) => {
       cocktails.forEach((cocktail) => console.log(cocktail.cocktailName));
       console.log('got the cocktails: ', cocktails);
-      this.cocktail = cocktails[0];
+      this.cocktail = cocktails[1];
     });
     commentService.getAllComments().subscribe((comment: Comment[]) => {
       comment.forEach((cm) => console.log(cm));
