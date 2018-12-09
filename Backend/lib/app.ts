@@ -39,10 +39,10 @@ class App{
         mongoose.connect(this.mongoUrl);
     }
 
-    private authSetup(): void{
+    private authSetup(): void {
         passport.use(new FacebookTokenStrategy({
             clientID: clientID,
-        clientSecret: clientSecret,
+            clientSecret: clientSecret,
     },
         (accessToken, refreshToken, profile, done) => {
             let userController = new UserController();
