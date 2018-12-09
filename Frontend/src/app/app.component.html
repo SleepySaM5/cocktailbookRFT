@@ -1,0 +1,25 @@
+<mat-sidenav-container class="all-wrap" fullscreen>
+
+  <mat-sidenav #sidenav>
+    <mat-list>
+      <mat-list-item [routerLink]="['/']" (click)="sidenav.close()">Home</mat-list-item>
+      <mat-list-item [routerLink]="['/cocktail']" (click)="sidenav.close()">Cocktail</mat-list-item>
+      <mat-list-item [routerLink]="['/browse']" (click)="sidenav.close()">Browse cocktails</mat-list-item>
+      <mat-list-item [routerLink]="['/page']" (click)="sidenav.close()">Page of cocktails</mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+
+  <div class="page-wrap" style="border: thin dotted midnightblue">
+    <app-header (sidenavButtonClick)="sidenav.open()"></app-header>
+
+    <button (click)="onLoginClick()" style="background-color: blanchedalmond">Click me!</button>
+    <button (click)="onWhoAmIClick()" style="background-color: burlywood">WhoAmI!</button>
+    <h2>Currently logged in user {{user ? user.email : 'No one :('}}</h2>
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+
+    <app-footer></app-footer>
+  </div>
+
+</mat-sidenav-container>

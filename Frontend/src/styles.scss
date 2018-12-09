@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+* {
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.card-header {
+  align-items: center;
+  display: flex;
+
+  .card-header-text {
+    display: flex;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .card-header-action {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.mat-card-header-text {
+   flex-grow: 3;
+}
+
+.like-button:before {
+    content: 'stars';
+    font-family: 'Material Icons', 'Georgia';
+}
+
+.all-wrap {
+  min-height: 100vh;
+}
+
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+/*
+ * Make the Component injected by Router Outlet full height:
+ */
+main {
+  display: flex;
+  flex-direction: column;
+  > *:not(router-outlet) {
+    flex: 1;
+    display: block;
+  }
+}
+
+

@@ -1,0 +1,19 @@
+<header role="banner">
+  <mat-toolbar color="primary">
+    <button
+      type="button"
+      mat-icon-button
+      (click)="onSidenavButtonClick()"
+      title="Open sidenav">
+      <mat-icon>menu</mat-icon>
+    </button>
+    The Cocktail Book
+    <span class="fill-space"></span>
+    <div class="login-button" *ngIf="!loggedIn">
+      <button mat-raised-button (click)="onLoginClick()">Login with Facebook</button>
+    </div>
+    <div class="login-button" *ngIf="loggedIn">
+      <button mat-raised-button (click)="onLogoutClick()">Logout</button>
+    </div>
+  </mat-toolbar>
+</header>

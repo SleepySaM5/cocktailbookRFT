@@ -1,0 +1,37 @@
+<mat-card class="mat-elevation-z4">
+
+  <mat-card-header class="card-header">
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title class="card-header-text">{{cocktail.cocktailName | titlecase}}</mat-card-title>
+    <mat-card-actions class="card-header-action">
+      <mat-icon>stars</mat-icon>
+      <button mat-button>LIKE</button>
+      <mat-icon>share</mat-icon>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card-header>
+  <mat-card-content class="description">
+    <p>{{cocktail.description}}</p>
+    <img mat-card-image [src]="myImgPath" [alt]="cocktail.imgAlt">
+  </mat-card-content>
+  <mat-card-content class="ingredients">
+    <mat-card-subtitle>Ingredients</mat-card-subtitle>
+      <mat-selection-list #ing>
+        <mat-list-option  *ngFor="let ingredient of cocktail.ingredientList; let i = index">
+          {{i + 1}}. {{ingredient}}
+        </mat-list-option>
+      </mat-selection-list>
+    <mat-card-actions>
+      <button  mat-button *ngIf="ing.selectedOptions.selected.length > 0 ">
+        Search with the selected ingredientList
+      </button>
+    </mat-card-actions>
+  </mat-card-content>
+  <mat-card-content class="making">
+    <mat-card-subtitle>Making</mat-card-subtitle>
+    <mat-list *ngFor="let instructions of cocktail.instructions;  let i = index">
+      <mat-list-item>{{i + 1}}. {{instructions}}</mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+</mat-card>

@@ -1,0 +1,11 @@
+:host {
+  .cocktail-list-display {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .cocktail-card {
+    padding: 2em;
+  }
+}
