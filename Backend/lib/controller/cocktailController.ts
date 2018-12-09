@@ -50,8 +50,6 @@ export class CocktailController {
             }
             res.json({ message: 'Successfully deleted cocktail!'});
         });
-
-
     }
     public filterCocktails (req: Request, res: Response) {
         console.log("filtering : ", req.query);

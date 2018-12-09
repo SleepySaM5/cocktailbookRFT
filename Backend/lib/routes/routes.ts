@@ -1,14 +1,18 @@
-import {Request, Response} from "express";
-import { CocktailController } from "../controller/cocktailController";
+import {Application, Request, Response} from "express";
+import {CocktailController} from "../controller/cocktailController";
 import * as passport from 'passport';
 import {AuthService} from "../auth";
 
 export class Routes {
+    private cocktailController: CocktailController;
+    private authService: AuthService;
 
-    public cocktailController: CocktailController = new CocktailController();
-    public authService = new AuthService();
+    constructor() {
+        this.cocktailController = new CocktailController();
+        this.authService = new AuthService();
+    }
 
-    public routes(app): void {
+    public routes(app: Application): void {
         app.route('/')
             .get((req: Request, res: Response) => {
                 res.status(200).send({
@@ -27,18 +31,24 @@ export class Routes {
             .delete(this.cocktailController.deleteCocktail)
 
         app.route('/auth/facebook')
-            .post(passport.authenticate('facebook-token', {session: false}),(req, res, next) => {
-                if (!req.user) {
-                    return res.send(401, 'User Not Authenticated');
-                }
-                req.auth = {
-                    id: req.user.id
-                };
+            .post(passport.authenticate('facebook-token', {session: false}),
+                (req: Request, res: Response, next: Function) => {
+                    if (!req['user']) {
+                        return res.status(401).send('User Not Authenticated');
+                    }
+                    req['auth'] = {
+                        id: req['user'].id
+                    };
 
-                next();
-            }, this.authService.generateToken, this.authService.sendToken);
+                    next();
+                }, (req: Request, res: Response, next: Function) => {
+                    this.authService.generateToken(req, res, next)
+                },
+                (req: Request, res: Response) => this.authService.sendToken(req, res));
         app.route('/auth/me')
-            .get(this.authService.authenticate, this.authService.getCurrentUser, this.authService.getOne);
+            .get(this.authService.authenticate,
+                (req: Request, res: Response, next: Function) => this.authService.getCurrentUser(req, res, next),
+                (req: Request, res: Response) => this.authService.getOne(req, res));
 
     }
 }

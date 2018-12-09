@@ -5,11 +5,11 @@ import * as fs from 'fs';
 const PORT = 3000;
 
 const httpsOptions = {
-    key: fs.readFileSync('./config/key.pem'),
-    cert: fs.readFileSync('./config/cert.pem')
+    key: fs.readFileSync('./config/server.key'),
+    cert: fs.readFileSync('./config/server.crt')
 }
 
 https.createServer(httpsOptions, app).listen(PORT, () => {
     console.log('Express server listening on port ' + PORT);
-})
+});
 

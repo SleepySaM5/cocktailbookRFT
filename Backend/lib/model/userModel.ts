@@ -7,6 +7,12 @@ export const UserSchema = new Schema({
         trim: true, unique: true,
         match: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     },
+    firstName: {
+        type: String, required: true
+    },
+    lastName: {
+        type: String, required: true
+    },
     facebookProvider: {
         type: {
             id: String,
