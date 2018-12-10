@@ -27,10 +27,19 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 
 
+<<<<<<< HEAD
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import {UserService} from './services/user.service';
+=======
+
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input';
+import { NewCocktailComponent } from './new-cocktail/new-cocktail.component';
+>>>>>>> origin/cocktail-components-part3
 
 @NgModule({
   declarations: [
@@ -41,7 +50,13 @@ import {UserService} from './services/user.service';
     HomeComponent,
     CocktailListComponent,
     CocktailPageComponent,
+<<<<<<< HEAD
     CocktailBrowseComponent
+=======
+    CocktailBrowseComponent,
+    LoginComponent,
+    NewCocktailComponent
+>>>>>>> origin/cocktail-components-part3
   ],
   imports: [
     BrowserAnimationsModule,
