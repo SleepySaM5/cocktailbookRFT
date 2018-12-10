@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatDialog } from '@angular/material';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -12,7 +11,7 @@ export class HeaderComponent implements OnInit {
   public sidenavButtonClick = new EventEmitter<void>();
   public loggedIn: boolean;
 
-  constructor(public dialog: MatDialog, private authService: UserService) {
+  constructor(private authService: UserService) {
     this.authService.isLoggedIn().then((loggedIn) => {
       this.loggedIn = loggedIn;
     });
@@ -31,6 +30,7 @@ export class HeaderComponent implements OnInit {
 
   onLogoutClick(): void {
     this.authService.logout();
+    window.location.reload();
     sessionStorage.clear();
     localStorage.clear();
   }

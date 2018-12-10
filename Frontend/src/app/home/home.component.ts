@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cocktail } from '../models/cocktail.model';
 import { CocktailService } from '../services/cocktail.service';
+import { User, UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,23 @@ import { CocktailService } from '../services/cocktail.service';
 })
 
 export class HomeComponent {
-  title = 'Welcome to the Cocktail Book!';
   cocktails: Array<Cocktail>;
 
-  constructor(service: CocktailService) {
+  public loggedIn: boolean;
+  user: User;
+
+  constructor(service: CocktailService, private authService: UserService) {
     service.getAllCocktails().subscribe( (cocktails: Cocktail[]) => {
       cocktails.forEach((cocktail) => console.log(cocktail.cocktailName));
       this.cocktails = cocktails;
+    });
+
+    this.authService.isLoggedIn().then((loggedIn) => {
+      this.loggedIn = loggedIn;
+    });
+
+    this.authService.getCurrentUser().then((user: any) => {
+      this.user = user;
     });
   }
 }
