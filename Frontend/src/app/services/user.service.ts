@@ -6,6 +6,8 @@ import { clientID } from '../config/constants';
 declare const FB: any;
 
 export interface User {
+  firstName?: string;
+  lastName?: string;
   img?: string;
   email?: string;
 }

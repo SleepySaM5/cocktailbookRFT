@@ -1,9 +1,10 @@
-<div class="mat-app-background basic-container">
+<div class="loggedOut" *ngIf="!loggedIn">
   <h1>
-    {{ title }}
+    Welcome to the Cocktail Book!
   </h1>
 </div>
-
-<ng-container *ngFor="let cocktail of cocktails">
-  <app-cocktail class="cocktail" [cocktail]="cocktail"></app-cocktail>
-</ng-container>
+<div class="loggedIn" *ngIf="loggedIn">
+  <h1>
+    Welcome to the Cocktail Book, {{user.firstName}}!
+  </h1>
+</div>
