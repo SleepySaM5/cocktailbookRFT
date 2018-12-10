@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  // TODO
+
   ngOnInit() {
   }
 
