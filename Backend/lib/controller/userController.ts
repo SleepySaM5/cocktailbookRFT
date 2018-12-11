@@ -5,10 +5,8 @@ export const User = mongoose.model('User', UserSchema);
 
 export class UserController {
     upsertFbUser(accessToken, refreshToken, profile, cb) {
-        console.log('UserController upsert user: ', accessToken);
-        console.log('UserController upsert user: ', refreshToken);
-        console.log('UserController upsert user: ', profile);
-        console.log('UserController upsert user: ', cb);
+        console.log('UserController upserting user: ', accessToken);
+
         return User.findOne({
                 'facebookProvider.id': profile.id
         }, (err, user) => {
@@ -23,12 +21,12 @@ export class UserController {
                         token: accessToken
                     }
                 });
+                console.log('No such user, making one! ', profile);
 
                 newUser.save((error, savedUser) => {
                     console.log('On save: ', savedUser);
-
                     if (error) {
-                        console.log(error);
+                        console.error(error);
                     }
                     return cb(error, savedUser);
                 });

@@ -21,6 +21,7 @@
   "dependencies": {
     "@types/body-parser": "^1.17.0",
     "@types/mongodb": "^3.1.13",
+    "@types/mongoose": "^5.3.4",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",

@@ -9,5 +9,8 @@ export const IngredientSchema = new Schema({
     type: {
         type: String,
         enum:['spirit','liqueur','fruit','sweetener','bitter','herb','other']
+    },
+    quantity: {
+        type : String
     }
 });

@@ -1,7 +1,7 @@
 import * as jwt from  "jsonwebtoken";
 import {Request, Response} from "express";
-import {jwtSecret} from "../config/constants";
 import {User} from "./controller/userController";
+import { jwtSecret } from "../../config/constants";
 
 export class AuthService {
     createToken(auth): any {
@@ -51,11 +51,11 @@ export class AuthService {
     }
 
     getOne(req: Request, res: Response) {
-        let user = req['user'].toObject();
-        console.log('get one, user was: ', user);
-        delete user['facebookProvider'];
-        delete user['__v'];
-        console.log('getOne sending user: ', user);
+        let user = req['user'];
+        if(user){
+            delete user['facebookProvider'];
+            delete user['__v'];
+        }
         res.json(user);
     };
 

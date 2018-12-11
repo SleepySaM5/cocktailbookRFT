@@ -4,15 +4,15 @@ import * as bodyParser from "body-parser";
 import { Routes } from "./routes/routes";
 import * as passport from 'passport';
 import * as FacebookTokenStrategy from 'passport-facebook-token';
-import {clientID, clientSecret} from "../config/constants";
 import {UserController} from "./controller/userController";
 import * as cors from "cors";
+import { clientID, clientSecret, mongoURL } from "../../config/constants";
 
 class App{
 
     public app: express.Application;
     public routePrv: Routes = new Routes();
-    public mongoUrl: string = 'mongodb://localhost/CRMdb';
+    public mongoUrl: string = mongoURL;
 
     constructor() {
         this.app = express();
@@ -35,8 +35,11 @@ class App{
     }
 
     private mongoSetup(): void{
-        mongoose.Promise = global.Promise;
-        mongoose.connect(this.mongoUrl);
+        console.log('Connecting to database!');
+        (mongoose as any).Promise = global.Promise;
+        mongoose.connect(this.mongoUrl)
+            .then(() => console.log('Connected to database!'))
+            .catch(() => console.error('Could not connect to database!'));
     }
 
     private authSetup(): void {
