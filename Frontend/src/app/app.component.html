@@ -10,12 +10,8 @@
     </mat-list>
   </mat-sidenav>
 
-  <div class="page-wrap" style="border: thin dotted midnightblue">
+  <div class="page-wrap">
     <app-header (sidenavButtonClick)="sidenav.open()"></app-header>
-
-    <!--<button (click)="onLoginClick()" style="background-color: blanchedalmond">Click me!</button>-->
-    <button (click)="onWhoAmIClick()" style="background-color: burlywood">WhoAmI!</button>
-    <!--<h2>Currently logged in user {{user ? user.email : 'No one :('}}</h2>-->
     <main class="content">
       <router-outlet></router-outlet>
     </main>

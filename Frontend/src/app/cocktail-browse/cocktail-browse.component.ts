@@ -1,15 +1,13 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Cocktail } from '../models/cocktail.model';
 import { Ingredient } from '../models/ingredient.model';
 import { CocktailService } from '../services/cocktail.service';
-import { FormControl} from '@angular/forms';
-import { Observable} from 'rxjs';
-import { COMMA, ENTER} from '@angular/cdk/keycodes';
-import { MatAutocomplete, MatChipInputEvent} from '@angular/material';
-import { map, startWith} from 'rxjs/operators';
-import { MatAutocompleteSelectedEvent} from '@angular/material/typings/esm5/autocomplete';
-
-
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatAutocomplete, MatChipInputEvent } from '@angular/material';
+import { map, startWith } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material/typings/esm5/autocomplete';
 
 
 @Component({
@@ -20,8 +18,8 @@ import { MatAutocompleteSelectedEvent} from '@angular/material/typings/esm5/auto
 export class CocktailBrowseComponent implements AfterViewInit {
 
   cocktails: Cocktail[];
-
-  ingredients: Ingredient[];
+  searchResultCocktails: Cocktail[];
+  errorText: string;
 
   visible = true;
   selectable = true;
@@ -36,18 +34,17 @@ export class CocktailBrowseComponent implements AfterViewInit {
   @ViewChild('ingredientInput') ingredientInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
-  constructor(cocktailService: CocktailService, ingredientService: CocktailService) {
+  constructor(private cocktailService: CocktailService,
+              ingredientService: CocktailService) {
     cocktailService.getAllCocktails().subscribe((cocktails: Cocktail[]) => {
       cocktails.forEach((cocktail) => console.log(cocktail.cocktailName));
       console.log('got the cocktails: ', cocktails);
       this.cocktails = cocktails;
     });
-    /*ingredientService.getAllIngredients().subscribe((ingredients: Ingredient[]) => {
-      ingredients.forEach((ingredient) => console.log(ingredient.name));
-      ingredients.forEach(ing => this.allIngredients.push(ing.name));
-      console.log('got the ingredientList: ', ingredients);
-      this.ingredients = ingredients;
-    });*/
+    cocktailService.getAllIngredients().subscribe((ingredients: Ingredient[]) => {
+      // @ts-ignore
+      this.allIngredients = ingredients.map((ingredient) => ingredient);
+    });
     this.filteredIngredients = this.ingredientCtrl.valueChanges.pipe(
       startWith(null),
       map((ingredient: string | null) => ingredient ? this._filter(ingredient) : this.allIngredients.slice()));
@@ -59,6 +56,8 @@ export class CocktailBrowseComponent implements AfterViewInit {
   add(event: MatChipInputEvent): void {
     // Add fruit only when MatAutocomplete is not open
     // To make sure this does not conflict with OptionSelected Event
+    this.searchResultCocktails = [];
+    this.errorText = '';
     if (!this.matAutocomplete.isOpen) {
       const input = event.input;
       const value = event.value;
@@ -78,8 +77,10 @@ export class CocktailBrowseComponent implements AfterViewInit {
   }
 
   remove(fruit: string): void {
-    const index = this.activeIngredients.indexOf(fruit);
+    this.searchResultCocktails = [];
+    this.errorText = '';
 
+    const index = this.activeIngredients.indexOf(fruit);
     if (index >= 0) {
       this.activeIngredients.splice(index, 1);
     }
@@ -95,6 +96,16 @@ export class CocktailBrowseComponent implements AfterViewInit {
     const filterValue = value.toLowerCase();
 
     return this.allIngredients.filter(ing => ing.toLowerCase().indexOf(filterValue) === 0);
+  }
+
+  onSearch(): void {
+    this.cocktailService.search(this.activeIngredients).subscribe((cocktails) => {
+      if (cocktails && cocktails.length) {
+        this.searchResultCocktails = cocktails;
+      } else {
+        this.errorText = 'No cocktails match the search!';
+      }
+    });
   }
 }
 

@@ -1,10 +1,17 @@
 :host {
   mat-card {
-    min-width: 300px;
-    max-width: 400px;
-
-    min-height: 250px;
-
+    height: 350px;
+    width: 300px;
   }
 
+  .image-container {
+    overflow: hidden;
+    margin: 16px -16px;
+    max-height: 200px;
+
+    img {
+      width: calc(100% + 32px);
+      height: auto;
+    }
+  }
 }

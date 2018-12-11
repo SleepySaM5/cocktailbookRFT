@@ -1,44 +1,41 @@
-<ng-container>
-  <div class="browse-page">
-    <div class="search">
-      <h2>
-        Find Cocktails
-      </h2>
-      <mat-form-field class="ingredient-chip-list">
-        <mat-chip-list #chipList>
-          <mat-chip
-            *ngFor="let ing of activeIngredients"
-            [selectable]="selectable"
-            [removable]="removable"
-            (removed)="remove(ing)">
-            {{ing}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-          </mat-chip>
-          <input
-            placeholder="Add ingredient..."
-            #ingredientInput
-            [formControl]="ingredientCtrl"
-            [matAutocomplete]="auto"
-            [matChipInputFor]="chipList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            [matChipInputAddOnBlur]="addOnBlur"
-            (matChipInputTokenEnd)="add($event)">
-        </mat-chip-list>
-        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-          <mat-option *ngFor="let ing of filteredIngredients | async" [value]="ing">
-            {{ing}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <p>
-        <button mat-button>Search</button>
-      </p>
-    </div>
-    <div class="results">
-      <app-cocktail-list class="cocktail-list" [cocktails]="cocktails"></app-cocktail-list>
-      <button mat-button class="new-cocktail">
-        <mat-icon mat-button class="new-cocktail">add_circle</mat-icon>
-      </button>
-    </div>
-  </div>
-</ng-container>
+<div class="search">
+  <h2>
+    Find Cocktails
+  </h2>
+  <mat-form-field class="ingredient-chip-list">
+    <mat-chip-list #chipList>
+      <mat-chip
+        *ngFor="let ing of activeIngredients"
+        [selectable]="selectable"
+        [removable]="removable"
+        (removed)="remove(ing)">
+        {{ing}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Add ingredient..."
+        #ingredientInput
+        [formControl]="ingredientCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let ing of filteredIngredients | async" [value]="ing">
+        {{ing}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <p>
+    <button mat-button (click)="onSearch()">Search</button>
+  </p>
+  <p class="error-text" *ngIf="errorText">{{errorText}}</p>
+</div>
+<div class="results">
+  <app-cocktail-list class="cocktail-list" [cocktails]="(searchResultCocktails && searchResultCocktails.length >= 1) ? searchResultCocktails : cocktails"></app-cocktail-list>
+  <button mat-button class="new-cocktail">
+    <mat-icon mat-button class="new-cocktail">add_circle</mat-icon>
+  </button>
+</div>

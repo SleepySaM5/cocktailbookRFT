@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --ssl true --ssl-cert \"ssl/server.crt\" --ssl-key \"ssl/server.key\"",
+    "start": "ng serve --ssl true --ssl-cert \"../config/server.crt\" --ssl-key \"../config/server.key\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -24,6 +24,7 @@
     "@angular/router": "~7.0.0",
     "angular2-jwt": "^0.2.3",
     "core-js": "^2.5.4",
+    "lodash": "^4.17.11",
     "mongodb": "^3.1.10",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"

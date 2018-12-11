@@ -29,7 +29,7 @@ import { UserService } from './services/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
-import { NewCocktailComponent } from './new-cocktail/new-cocktail.component';
+// import { NewCocktailComponent } from './new-cocktail/new-cocktail.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { NewCocktailComponent } from './new-cocktail/new-cocktail.component';
     CocktailPageComponent,
     CocktailBrowseComponent,
     CocktailBrowseComponent,
-    NewCocktailComponent
+    // NewCocktailComponent
   ],
   imports: [
     BrowserAnimationsModule,

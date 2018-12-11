@@ -1,0 +1,14 @@
+:host {
+  background-color: gainsboro;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 32px;
+  display: flex;
+  align-items: center;
+
+  footer {
+    text-align: center;
+    margin: 0 auto;
+  }
+}

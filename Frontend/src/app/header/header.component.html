@@ -13,6 +13,7 @@
       <button mat-raised-button (click)="onLoginClick()">Login with Facebook</button>
     </div>
     <div class="login-button" *ngIf="loggedIn">
+      <span>Hello, {{user.firstName}}!</span>
       <button mat-raised-button (click)="onLogoutClick()">Logout</button>
     </div>
   </mat-toolbar>

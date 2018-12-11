@@ -12,7 +12,7 @@
   </mat-card-header>
   <mat-card-content class="description">
     <p>{{cocktail.description}}</p>
-    <img mat-card-image [src]="myImgPath" [alt]="cocktail.imgAlt">
+    <img mat-card-image [src]="cocktail? cocktail.imgPath : fallBackImgPath" [alt]="cocktail.imgAlt">
   </mat-card-content>
   <mat-card-content class="ingredients">
     <mat-card-subtitle>Ingredients</mat-card-subtitle>
