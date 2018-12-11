@@ -1,15 +1,13 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Cocktail } from '../models/cocktail.model';
 import { Ingredient } from '../models/ingredient.model';
 import { CocktailService } from '../services/cocktail.service';
-import { FormControl} from '@angular/forms';
-import { Observable} from 'rxjs';
-import { COMMA, ENTER} from '@angular/cdk/keycodes';
-import { MatAutocomplete, MatChipInputEvent} from '@angular/material';
-import { map, startWith} from 'rxjs/operators';
-import { MatAutocompleteSelectedEvent} from '@angular/material/typings/esm5/autocomplete';
-
-
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatAutocomplete, MatChipInputEvent } from '@angular/material';
+import { map, startWith } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material/typings/esm5/autocomplete';
 
 
 @Component({

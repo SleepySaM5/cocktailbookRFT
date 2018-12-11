@@ -25,9 +25,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
-
-
-import { LoginComponent } from './login/login.component';
+import { UserService } from './services/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
@@ -43,7 +41,7 @@ import { CocktailCommentComponent } from './cocktail-comment/cocktail-comment.co
     CocktailListComponent,
     CocktailPageComponent,
     CocktailBrowseComponent,
-    LoginComponent,
+    CocktailBrowseComponent,
     CocktailCommentComponent
   ],
   imports: [
@@ -72,7 +70,8 @@ import { CocktailCommentComponent } from './cocktail-comment/cocktail-comment.co
     MatDialogModule
   ],
   providers: [
-    CocktailService
+    CocktailService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

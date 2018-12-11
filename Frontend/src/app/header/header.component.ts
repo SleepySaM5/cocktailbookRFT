@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { LoginComponent } from '../login/login.component';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +9,13 @@ import { LoginComponent } from '../login/login.component';
 export class HeaderComponent implements OnInit {
   @Output()
   public sidenavButtonClick = new EventEmitter<void>();
-  constructor(public dialog: MatDialog) { }
+  public loggedIn: boolean;
+
+  constructor(private authService: UserService) {
+    this.authService.isLoggedIn().then((loggedIn) => {
+      this.loggedIn = loggedIn;
+    });
+  }
 
   ngOnInit() {
   }
@@ -19,7 +24,14 @@ export class HeaderComponent implements OnInit {
     this.sidenavButtonClick.emit();
   }
 
-  openDialog(): void {
-    this.dialog.open(LoginComponent);
+  onLoginClick(): void {
+    this.authService.facebookLogin();
+  }
+
+  onLogoutClick(): void {
+    this.authService.logout();
+    window.location.reload();
+    sessionStorage.clear();
+    localStorage.clear();
   }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CocktailService } from './services/cocktail.service';
 import { Cocktail } from './models/cocktail.model';
 import { Ingredient } from './models/ingredient.model';
+import { User, UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,12 @@ import { Ingredient } from './models/ingredient.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'the Cocktail Book';
   cocktails: Array<Cocktail>;
   ingredients: Array<Ingredient>;
+  user: User;
 
-  constructor(service: CocktailService) {
+  constructor(service: CocktailService,
+              private authService: UserService) {
     service.getAllCocktails().subscribe( (cocktails: Cocktail[]) => {
       cocktails.forEach((cocktail) => console.log(cocktail.cocktailName));
       console.log('got the cocktails: ', cocktails);
@@ -26,4 +28,16 @@ export class AppComponent {
     });*/
   }
 
+  onLoginClick(): void {
+    this.authService.facebookLogin();
+    /*this.authService.getCurrentUser().then((user: any) => {
+      this.user = user;
+    });*/
+  }
+
+  onWhoAmIClick(): void {
+    this.authService.getCurrentUser().then((user: any) => {
+      this.user = user;
+    });
+  }
 }

@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Comment } from '../models/comment.model';
-import {I18nPluralPipe} from "@angular/common";
-
 
 @Component({
   selector: 'app-cocktail-comment',
