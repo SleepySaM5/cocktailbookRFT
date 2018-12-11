@@ -2,14 +2,17 @@ import {Application, Request, Response} from "express";
 import {CocktailController} from "../controller/cocktailController";
 import * as passport from 'passport';
 import {AuthService} from "../auth";
+import {UserActionController} from "../controller/userActionController";
 
 export class Routes {
     private cocktailController: CocktailController;
     private authService: AuthService;
+    private userActionController: UserActionController;
 
     constructor() {
         this.cocktailController = new CocktailController();
         this.authService = new AuthService();
+        this.userActionController = new UserActionController();
     }
 
     public routes(app: Application): void {
@@ -24,11 +27,11 @@ export class Routes {
         app.route('/cocktail')
             .get(this.cocktailController.getCocktails);
         app.route('/cocktail/filter')
-            .get(this.cocktailController.filterCocktails)
+            .get(this.cocktailController.filterCocktails);
         app.route('/cocktail/:cocktailID')
             .get(this.cocktailController.getCocktailWithID)
             .put(this.cocktailController.updateCocktail)
-            .delete(this.cocktailController.deleteCocktail)
+            .delete(this.cocktailController.deleteCocktail);
 
         app.route('/auth/facebook')
             .post(passport.authenticate('facebook-token', {session: false}),
@@ -50,6 +53,11 @@ export class Routes {
                 (req: Request, res: Response, next: Function) => this.authService.getCurrentUser(req, res, next),
                 (req: Request, res: Response) => this.authService.getOne(req, res));
 
+        app.route('/user/:userID/favourites')
+            .get(this.userActionController.getFavourites);
+        app.route('/user/:userID/favourites/:cocktailID')
+            .post(this.userActionController.addCocktailToFavorites)
+            .delete(this.userActionController.deleteFavourite);
     }
 }
 

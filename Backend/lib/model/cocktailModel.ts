@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 export const CocktailSchema = new Schema({
     cocktailName: {
         type: String,
-        required: 'Enter a cocktail name'
+        required: 'Enter a cocktail name!'
     },
     ingredientList: {
         type: [String]
@@ -12,8 +12,21 @@ export const CocktailSchema = new Schema({
     description:{
       type : String
     },
-    created_date: {
+    imgPath:{
+        type : String
+    },
+    imgAlt:{
+        type : String
+    },
+    createdDate: {
         type: Date,
         default: Date.now
     }
 });
+
+export interface CocktailModel {
+    cocktailName: string;
+    ingredientList: string[],
+    description: string,
+    createdDate: Date
+}
