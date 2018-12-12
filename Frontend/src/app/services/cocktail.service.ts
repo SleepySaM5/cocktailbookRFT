@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Cocktail } from '../models/cocktail.model';
 import { Ingredient } from '../models/ingredient.model';
+import { backendURL } from '../../../../config/constants';
 import { map } from 'rxjs/operators';
 import { concat, uniq } from 'lodash';
 
@@ -11,12 +12,11 @@ export class CocktailService {
 
   cocktails: Cocktail[] = [];
   ingredients: Ingredient[] = [];
-  readonly URL = 'https://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
   getAllCocktails(): Observable<Cocktail[]> {
-    return this.http.get<Cocktail[]>(this.URL + '/cocktail');
+    return this.http.get<Cocktail[]>(backendURL + '/cocktail');
   }
 
   getAllIngredients(): Observable<Ingredient[]> {
@@ -31,7 +31,7 @@ export class CocktailService {
   }
 
   search(ingredients: string[]): Observable<Cocktail[]> {
-    return this.http.get<Cocktail[]>(this.URL + '/cocktail/filter?ingredients=' + ingredients);
+    return this.http.get<Cocktail[]>(backendURL + '/cocktail/filter?ingredients=' + ingredients);
   }
 
 }

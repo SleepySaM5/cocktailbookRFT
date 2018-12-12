@@ -3,6 +3,7 @@ import { Cocktail } from '../models/cocktail.model';
 import { MatAutocomplete } from '@angular/material';
 import { CocktailService } from '../services/cocktail.service';
 import { Ingredient } from '../models/ingredient.model';
+import { FavouriteService } from '../services/favourite.service';
 
 @Component({
   selector: 'app-favourite',
@@ -18,7 +19,8 @@ export class FavouriteComponent implements AfterViewInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor(private cocktailService: CocktailService,
-              ingredientService: CocktailService) {
+              ingredientService: CocktailService,
+              favouriteService: FavouriteService) {
     cocktailService.getAllCocktails().subscribe((cocktails: Cocktail[]) => {
       cocktails.forEach((cocktail) => console.log(cocktail.cocktailName));
       console.log('got the cocktails: ', cocktails);

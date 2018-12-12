@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Cocktail } from '../models/cocktail.model';
-import { CocktailService } from "../services/cocktail.service";
+import { CocktailService } from '../services/cocktail.service';
+import { FavouriteService } from '../services/favourite.service';
 
 @Component({
   selector: 'app-cocktail',
@@ -10,25 +11,23 @@ import { CocktailService } from "../services/cocktail.service";
 export class CocktailComponent implements OnInit {
   @Input()
   cocktail: Cocktail;
-  favourite: boolean;
 
   fallBackPath = 'assets/ginTonic.jpeg';
 
-  constructor(private cocktailService: CocktailService) {
-    this.favourite = true;
-    console.log('default visibility: ' + this.favourite);
+  constructor(private cocktailService: CocktailService,
+              public favouriteService: FavouriteService) {
+    console.log('default visibility: ' + favouriteService.isFavourite);
   }
 
   ngOnInit() {
   }
 
   toggleFavourite(): void {
-    if (this.favourite === true) {
-      this.favourite = false;
+    if (this.favouriteService.isFavourite === true) {
+      this.favouriteService.removeFromFavourites();
     } else {
-      this.favourite = true;
+      this.favouriteService.addToFavourites();
     }
-    console.log('visibility changed: ' + this.favourite);
+    console.log('favourite status: ' + this.favouriteService.isFavourite);
   }
-
 }

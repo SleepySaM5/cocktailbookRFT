@@ -4,8 +4,8 @@
     <mat-card-title style="margin-bottom: 6px"
                     class="card-header-text">{{cocktail.cocktailName | titlecase}}</mat-card-title>
     <mat-card-actions class="card-header-action">
-      <mat-icon (click)="toggleFavourite()" *ngIf="favourite">star_border</mat-icon>
-      <mat-icon (click)="toggleFavourite()" *ngIf="!favourite">star</mat-icon>
+      <mat-icon (click)="toggleFavourite()" *ngIf="!favouriteService.isFavourite">star_border</mat-icon>
+      <mat-icon (click)="toggleFavourite()" *ngIf="favouriteService.isFavourite">star</mat-icon>
       <button mat-button></button>
       <mat-icon>share</mat-icon>
       <button mat-button></button>
