@@ -1,0 +1,24 @@
+<ng-container>
+  <mat-card  class="mat-elevation-z4">
+    <div class="add-cocktail">
+      <mat-form-field appearance="outline">
+        <mat-label>Cocktail Name</mat-label>
+        <input matInput placeholder="Gin Tonic" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cocktail Description</mat-label>
+        <textarea matInput required></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cocktail Image</mat-label>
+        <input matInput placeholder="Image url" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cocktail Ingredient List</mat-label>
+        <input matInput placeholder="Ingredients" required pattern="[a-zA-Z]*|[a-zA-Z, a-zA-Z]*">
+        <mat-hint>Please the ingredients separated by a single comma</mat-hint>
+      </mat-form-field>
+      <button mat-button>Upload</button>
+    </div>
+  </mat-card>
+</ng-container>

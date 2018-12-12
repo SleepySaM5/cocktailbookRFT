@@ -27,17 +27,21 @@
       </button>
     </mat-card-actions>
   </mat-card-content>
-  <mat-card-content class="making">
-    <mat-card-subtitle>Making</mat-card-subtitle>
-    <mat-list *ngFor="let instructions of cocktail.instructions;  let i = index">
-      <mat-list-item>{{i + 1}}. {{instructions}}</mat-list-item>
-    </mat-list>
-  </mat-card-content>
+
 
 </mat-card>
 
-<div>
-  <div *ngFor="let comment of commentss" class="comment-box">
-    <app-cocktail class="comment" [comment]="comment"></app-cocktail>
-  </div>
+<div *ngFor="let comment of comments" class="comment-box">
+  <app-cocktail-comment class="comment" [comment]="comment"></app-cocktail-comment>
+</div>
+<div class="new-comment-form">
+  <p>Add new comment</p>
+  <form class="example-form">
+    <mat-form-field class="comment-content">
+      <textarea matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field>
+  </form>
+  <button mat-button>
+    Submit comment
+  </button>
 </div>

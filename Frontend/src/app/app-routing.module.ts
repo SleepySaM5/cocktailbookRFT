@@ -4,13 +4,14 @@ import { CocktailComponent } from './cocktail/cocktail.component';
 import { HomeComponent } from './home/home.component';
 import { CocktailBrowseComponent } from './cocktail-browse/cocktail-browse.component';
 import { CocktailPageComponent } from './cocktail-page/cocktail-page.component';
-// import { NewCocktailComponent } from './new-cocktail/new-cocktail.component';
+import { CocktailCreateComponent } from './cocktail-create/cocktail-create.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'cocktail/:id', component: CocktailComponent },
   { path: 'browse', component: CocktailBrowseComponent },
   { path: 'page', component: CocktailPageComponent },
+  { path: 'create', component: CocktailCreateComponent}
 ];
 
 @NgModule({
