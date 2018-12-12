@@ -35,3 +35,9 @@
   </mat-card-content>
 
 </mat-card>
+
+<div>
+  <div *ngFor="let comment of commentss" class="comment-box">
+    <app-cocktail class="comment" [comment]="comment"></app-cocktail>
+  </div>
+</div>

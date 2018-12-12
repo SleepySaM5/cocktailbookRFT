@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Cocktail } from '../models/cocktail.model';
 import { Ingredient } from '../models/ingredient.model';
+import { Comment } from '../models/comment.model';
+
 import { map } from 'rxjs/operators';
 import { concat, uniq } from 'lodash';
 
@@ -33,6 +35,10 @@ export class CocktailService {
 
   search(ingredients: string[]): Observable<Cocktail[]> {
     return this.http.get<Cocktail[]>(this.URL + '/cocktail/filter?ingredients=' + ingredients);
+  }
+
+  getAllComments(): Observable<Comment[]> {
+    return this.http.get<Comment[]>(this.URL + '/comments');
   }
 
 }
