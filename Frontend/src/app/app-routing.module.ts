@@ -4,12 +4,14 @@ import { CocktailComponent } from './cocktail/cocktail.component';
 import { HomeComponent } from './home/home.component';
 import { CocktailBrowseComponent } from './cocktail-browse/cocktail-browse.component';
 import { CocktailPageComponent } from './cocktail-page/cocktail-page.component';
+import { FavouriteComponent } from './favourite/favourite.component';
 // import { NewCocktailComponent } from './new-cocktail/new-cocktail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'cocktail/:id', component: CocktailComponent },
   { path: 'browse', component: CocktailBrowseComponent },
+  { path: 'favourite', component: FavouriteComponent },
   { path: 'page', component: CocktailPageComponent },
 ];
 

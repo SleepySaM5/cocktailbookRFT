@@ -29,6 +29,7 @@ import { UserService } from './services/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
+import { FavouriteComponent } from './favourite/favourite.component';
 // import { NewCocktailComponent } from './new-cocktail/new-cocktail.component';
 
 @NgModule({
@@ -42,6 +43,7 @@ import { MatInputModule } from '@angular/material/input';
     CocktailPageComponent,
     CocktailBrowseComponent,
     CocktailBrowseComponent,
+    FavouriteComponent,
     // NewCocktailComponent
   ],
   imports: [

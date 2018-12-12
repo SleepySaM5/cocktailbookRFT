@@ -20,7 +20,6 @@ export class CocktailService {
   }
 
   getAllIngredients(): Observable<Ingredient[]> {
-
     return this.getAllCocktails().pipe(
       map((cocktails) => {
         cocktails.forEach((cocktail) => {
