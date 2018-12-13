@@ -8,6 +8,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatAutocomplete, MatChipInputEvent } from '@angular/material';
 import { map, startWith } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/typings/esm5/autocomplete';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -35,7 +36,8 @@ export class CocktailBrowseComponent implements AfterViewInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor(private cocktailService: CocktailService,
-              ingredientService: CocktailService) {
+              ingredientService: CocktailService,
+              private router: Router) {
     cocktailService.getAllCocktails().subscribe((cocktails: Cocktail[]) => {
       cocktails.forEach((cocktail) => console.log(cocktail.cocktailName));
       console.log('got the cocktails: ', cocktails);
@@ -48,6 +50,7 @@ export class CocktailBrowseComponent implements AfterViewInit {
     this.filteredIngredients = this.ingredientCtrl.valueChanges.pipe(
       startWith(null),
       map((ingredient: string | null) => ingredient ? this._filter(ingredient) : this.allIngredients.slice()));
+
   }
 
   ngAfterViewInit() {
@@ -106,6 +109,10 @@ export class CocktailBrowseComponent implements AfterViewInit {
         this.errorText = 'No cocktails match the search!';
       }
     });
+  }
+
+  addCocktail(): void {
+    this.router.navigate(['/create']);
   }
 }
 

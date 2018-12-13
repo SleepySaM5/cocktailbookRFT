@@ -29,6 +29,8 @@ import { UserService } from './services/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
+import { CocktailCreateComponent } from "./cocktail-create/cocktail-create.component";
+import { CocktailCommentComponent } from './cocktail-comment/cocktail-comment.component';
 // import { NewCocktailComponent } from './new-cocktail/new-cocktail.component';
 
 @NgModule({
@@ -42,7 +44,8 @@ import { MatInputModule } from '@angular/material/input';
     CocktailPageComponent,
     CocktailBrowseComponent,
     CocktailBrowseComponent,
-    // NewCocktailComponent
+    CocktailCommentComponent,
+    CocktailCreateComponent,
   ],
   imports: [
     BrowserAnimationsModule,
