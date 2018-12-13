@@ -22,8 +22,8 @@
         </mat-list-option>
       </mat-selection-list>
     <mat-card-actions>
-      <button  mat-button *ngIf="ing.selectedOptions.selected.length > 0 ">
-        Search with the selected ingredientList
+      <button  mat-button *ngIf="ing.selectedOptions.selected.length > 0 " (click)="search()">
+        Search with the selected ingredients
       </button>
     </mat-card-actions>
   </mat-card-content>

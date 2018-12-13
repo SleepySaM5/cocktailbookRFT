@@ -21,6 +21,7 @@
       width: auto;
       height: auto;
       max-width: 300px;
+      max-height: 300px;
     }
   }
 
@@ -35,8 +36,6 @@
     mat-card-actions {
       text-align: right;
     }
-
-    border-bottom: rgba(15, 13, 26, 0.15) 1px solid;
     border-top: rgba(15, 13, 26, 0.15) 1px solid;
   }
 
