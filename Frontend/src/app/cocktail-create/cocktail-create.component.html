@@ -1,23 +1,28 @@
+
 <ng-container>
   <mat-card  class="mat-elevation-z4">
-    <div class="add-cocktail">
+    <form class="add-cocktail" [formGroup]="cocktailForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline">
         <mat-label>Cocktail Name</mat-label>
-        <input matInput id="name" placeholder="Gin Tonic" required>
+        <input matInput type="text" id="name" placeholder="Gin Tonic" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cocktail Description</mat-label>
+        <input matInput type="text" id="description" placeholder="How to make this cocktail" formControlName="desc" required>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Cocktail Image</mat-label>
-        <input matInput id="image" placeholder="Image url" required>
+        <input matInput type="url" id="image" placeholder="Image url" formControlName="img" required>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Cocktail Ingredient List</mat-label>
-        <input matInput id="ingredients" name="ingredients" placeholder="Ingredients" required #ingredients>
+        <input matInput type="text" id="ingredients" name="ingredients" placeholder="Ingredients" formControlName="ingredients" required>
         <mat-hint>Please the ingredients separated by a single comma</mat-hint>
       </mat-form-field>
-      <div *ngIf="ingredients.errors">
-          Wrong form
-      </div>
-      <button mat-button (click)="upload()">Upload</button>
-    </div>
+      <!--<div *ngIf="ingredients.errors">-->
+      <!--Wrong form-->
+      <!--</div>-->
+      <button mat-button type="submit" [disabled]="!cocktailForm.valid">Upload</button>
+    </form>
   </mat-card>
 </ng-container>
