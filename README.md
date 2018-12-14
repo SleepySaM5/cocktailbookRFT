@@ -1,19 +1,90 @@
-# cocktailbookRFT
+# The Cocktail Book
 
-To start the application: 
+The Cocktail Book is a Single Page Application which can manage your favorite cocktails, or you can find new ones to try out. You can also check out what others think about said cocktails.
 
-I.
+## Getting Started
 
-1. Navigate to /Frontend
-2. npm install
-3. npm run start
+These instructions will get you a copy of the project up and running on your local machine for development purposes.
 
-II. 
+### Prerequisites
 
-1. Navigate to /Backend
-2. npm install
-3. npm run dev
+Install Node.js
 
-III.
+```
+https://nodejs.org/en/download/
+```
 
-1. App should be living on https://localhost:4200
+Check if you have node.js and npm installed correctly
+
+```
+node -v
+npm -v
+```
+
+Install latest version of Angular CLI with npm
+
+```
+npm install -g @angular/cli
+```
+
+### Installing
+
+Clone project from Github
+
+```
+git clone https://github.com/samuraay/cocktailbookRFT.git
+```
+
+Download config folder from
+
+```
+https://drive.google.com/open?id=14Mqg2-ZNJP3qcL5oIDfVpIzPqHszR0dM
+```
+and copy folder to root of the project.
+
+Navigate to the config folder and install certifications from server.crt file.
+
+Navigate to Frontend directory, then run
+
+```
+npm install
+npm run start
+```
+This will start the frontend part of the app.
+
+Navigate to Backend directory, then run
+
+```
+npm install
+npm run dev
+```
+This will start the backend part of the app.
+
+Navigate to
+
+```
+https://localhost:4200
+```
+in a browser. The project should be up and running :)
+
+## Built With
+
+* [Angular CLI](https://cli.angular.io/) - The web framework used
+* [Node.js](https://maven.apache.org/) - Build tool
+* [Trello](https://rometools.github.io/rome/) - Task management
+
+## Authors
+
+* **Kovács-Fazekas Balázs** - *Frontend* - [balazs108](https://github.com/balazs108)
+* **Kolozsvári Árpád Csongor** - *Backend* - [csongli](https://github.com/csongli)
+* **Venczel Tibor Tamás** - *Frontend* - [samuraay](https://github.com/samuraay)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Stack Overflow
+* Juditka ;)
