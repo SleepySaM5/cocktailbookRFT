@@ -1,0 +1,9 @@
+<div class="new-comment-form">
+  <p>Add new comment</p>
+  <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="comment-content" >
+      <textarea matInput placeholder="Leave a comment" formControlName="commentContent"></textarea>
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="!commentForm.valid">Submit comment</button>
+  </form>
+</div>
