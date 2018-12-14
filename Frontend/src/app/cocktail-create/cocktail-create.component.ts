@@ -31,6 +31,7 @@ export class CocktailCreateComponent implements OnInit {
     this.cocktail = new Cocktail(this.cocktailForm.value.name, this.cocktailForm.value.ingredients,
       this.cocktailForm.value.img, this.cocktailForm.value.desc);
     console.log(this.cocktail);
+    this.cocktailService.addCocktail(this.cocktail).subscribe(() => {});
   }
   // upload() {
   //   console.log(this);
