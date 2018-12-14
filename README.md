@@ -40,7 +40,7 @@ Download config folder from
 ```
 https://drive.google.com/open?id=14Mqg2-ZNJP3qcL5oIDfVpIzPqHszR0dM
 ```
-and copy folder to root of the project.
+and copy folder to root of the project. (The password is "cocktail" - remove quote marks).
 
 Navigate to the config folder and install certifications from server.crt file.
 
