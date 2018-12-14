@@ -57,7 +57,8 @@ export class CocktailService {
     return this.http.get<Comment[]>(this.URL + '/comments');
   }
 
-  addCocktail (cocktail: Cocktail): Observable<Cocktail> {
+  addCocktail(cocktail: Cocktail): Observable<Cocktail> {
+    console.log('cocktail added');
     return this.http.post<Cocktail>(this.URL + '/cocktail', cocktail)
       .pipe(
         catchError(this.handleError)

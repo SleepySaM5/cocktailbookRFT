@@ -1,8 +1,12 @@
-export interface Cocktail {
-    cocktailID: number;
-    cocktailName: string;
-    ingredientList: Array<string>;
-    description: string;
-    imgPath?: string;
-    imgAlt?: string;
+
+export class Cocktail {
+  constructor (
+    public cocktailName: string,
+    public ingredientList: Array<string>,
+    public description: string,
+    public imgPath?: string,
+    public imgAlt?: string,
+    public cocktailID?: number) {
+
+  }
 }
