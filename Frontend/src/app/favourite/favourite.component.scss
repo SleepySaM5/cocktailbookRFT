@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  .search {
+    flex-grow: 2;
+    background-color: #F4F4F4;
+    margin: -2em;
+    padding: 2em;
+    max-width: 250px;
+
+    .search-viewport {
+      min-width: 150px;
+      max-width: 200px;
+      min-height: 350px;
+      max-height: 400px;
+    }
+  }
+
+  .results {
+    flex-grow: 8;
+    margin-left: 2em;
+
+    .new-cocktail {
+      position: fixed;
+      bottom: 100px;
+      right: 100px;
+      width: 110px;
+      height: 110px;
+
+      mat-icon {
+        font-size: 100px;
+      }
+    }
+  }
+
+  .error-text {
+    color: darkred;
+  }
+
+}

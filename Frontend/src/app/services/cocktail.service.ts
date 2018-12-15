@@ -4,8 +4,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Cocktail } from '../models/cocktail.model';
 import { Ingredient } from '../models/ingredient.model';
 import { Comment } from '../models/comment.model';
-
 import { catchError, map } from 'rxjs/operators';
+import { backendURL } from '../../../../config/constants';
 import { concat, uniq } from 'lodash';
 
 @Injectable()
@@ -13,7 +13,6 @@ export class CocktailService {
 
   cocktails: Cocktail[] = [];
   ingredients: Ingredient[] = [];
-  readonly URL = 'https://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
@@ -34,11 +33,10 @@ export class CocktailService {
   }
 
   getAllCocktails(): Observable<Cocktail[]> {
-    return this.http.get<Cocktail[]>(this.URL + '/cocktail');
+    return this.http.get<Cocktail[]>(backendURL + '/cocktail');
   }
 
   getAllIngredients(): Observable<Ingredient[]> {
-
     return this.getAllCocktails().pipe(
       map((cocktails) => {
         cocktails.forEach((cocktail) => {
@@ -50,16 +48,16 @@ export class CocktailService {
   }
 
   search(ingredients: string[]): Observable<Cocktail[]> {
-    return this.http.get<Cocktail[]>(this.URL + '/cocktail/filter?ingredients=' + ingredients);
+    return this.http.get<Cocktail[]>(backendURL + '/cocktail/filter?ingredients=' + ingredients);
   }
 
   getAllComments(): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.URL + '/comments');
+    return this.http.get<Comment[]>(backendURL + '/comments');
   }
 
   addCocktail(cocktail: Cocktail): Observable<Cocktail> {
     console.log('cocktail added');
-    return this.http.post<Cocktail>(this.URL + '/cocktail', cocktail)
+    return this.http.post<Cocktail>(backendURL + '/cocktail', cocktail)
       .pipe(
         catchError(this.handleError)
       );
