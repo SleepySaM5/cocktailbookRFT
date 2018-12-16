@@ -10,6 +10,8 @@ import { map, startWith } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/typings/esm5/autocomplete';
 import { Router } from '@angular/router';
 import { FavouriteService } from "../services/favourite.service";
+import { AuthService } from "../../../../Backend/lib/auth";
+import { UserService } from "../services/user.service";
 
 
 @Component({
@@ -21,6 +23,7 @@ export class CocktailBrowseComponent implements AfterViewInit {
 
   cocktails: Cocktail[];
   favourites: Cocktail[];
+  showFavourites: boolean = false;
   searchResultCocktails: Cocktail[];
   errorText: string;
 
@@ -39,21 +42,28 @@ export class CocktailBrowseComponent implements AfterViewInit {
 
   constructor(private cocktailService: CocktailService,
               private favouriteService: FavouriteService,
+              private authService: UserService,
               ingredientService: CocktailService,
               private router: Router) {
     cocktailService.getAllCocktails().subscribe((cocktails: Cocktail[]) => {
       cocktails.forEach((cocktail) => console.log(cocktail.name));
-      console.log('got the cocktails: ', cocktails);
       this.cocktails = cocktails;
     });
 
-    favouriteService.getAllFavourites().subscribe((favourites) => {
-        this.favourites = favourites;
-    });
+    this.getFavourites();
 
     favouriteService.favouritesSubject.subscribe((favourites) => {
-      console.log('Got favourites from subject');
       this.favourites = favourites;
+    });
+
+    this.authService.isLoggedIn().then((isLoggedIn: boolean) => {
+      this.showFavourites = isLoggedIn;
+    });
+
+    this.authService.loginFinished.subscribe(() => {
+      this.showFavourites = true;
+      this.getFavourites();
+
     });
 
     cocktailService.getAllIngredients().subscribe((ingredients: Ingredient[]) => {
@@ -66,6 +76,12 @@ export class CocktailBrowseComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+  }
+
+  getFavourites(): void {
+    this.favouriteService.getAllFavourites().subscribe((favourites) => {
+      this.favourites = favourites;
+    });
   }
 
   add(event: MatChipInputEvent): void {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Cocktail } from '../models/cocktail.model';
 import { Ingredient } from '../models/ingredient.model';
 import { Comment } from '../models/comment.model';
@@ -62,7 +62,24 @@ export class CocktailService {
   }
 
   getAllComments(): Observable<Comment[]> {
-    return this.http.get<Comment[]>(backendURL + '/comments');
+    if (!localStorage.getItem('id_token')) {
+      return of(null);
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token':  localStorage.getItem('id_token'),
+      })
+    };
+    console.log('http Options aws:', httpOptions);
+    return this.http.get<Comment[]>(backendURL + '/comments', httpOptions)
+      .pipe( map((comments) => {
+        return comments.map((comment: any) => {
+          return new Comment(comment.cocktailID,
+            comment.date,
+            comment.content,
+            comment.author);
+        })
+      }));
   }
 
   addCocktail(cocktail: Cocktail): Observable<Cocktail> {
@@ -75,7 +92,17 @@ export class CocktailService {
 
   addComment(comment: Comment): Observable<Comment> {
     console.log(comment);
-    return this.http.post<Comment>(backendURL + '/comment', comment)
+    if (!localStorage.getItem('id_token')) {
+      return of(null);
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token':  localStorage.getItem('id_token'),
+      })
+    };
+    console.log('http Options aws:', httpOptions);
+
+    return this.http.post<Comment>(backendURL + '/comment', comment, httpOptions)
       .pipe(
         catchError(this.handleError)
       );

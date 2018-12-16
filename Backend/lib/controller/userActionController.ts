@@ -123,7 +123,7 @@ export class UserActionController {
         let userId = user['_id'];
         let newComment = new Comment({
             content : req.body.commentContent,
-            cocktailId : req.body.cocktailId,
+            cocktailID : req.body.cocktailId,
             author : req.body.commentAuthor,
             date: Date.now()
         });
@@ -135,6 +135,7 @@ export class UserActionController {
             res.json(comment);
         });
     }
+
     public getComments(req: Request, res: Response){
         console.log("Getting the comments.");
         Comment.find({}, (err, comments) => {

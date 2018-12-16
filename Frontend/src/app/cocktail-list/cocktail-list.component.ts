@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Cocktail } from '../models/cocktail.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { Cocktail } from '../models/cocktail.model';
   templateUrl: './cocktail-list.component.html',
   styleUrls: ['./cocktail-list.component.scss']
 })
-export class CocktailListComponent {
+export class CocktailListComponent implements OnChanges {
 
   @Input()
   cocktails: Cocktail[];
@@ -16,6 +16,10 @@ export class CocktailListComponent {
 
   @Input()
   showFavourites: boolean = false;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('Favourites changed: ', this.favourites);
+  }
 
   isFavourite(cocktail: Cocktail): boolean {
     if(this.favourites) {
