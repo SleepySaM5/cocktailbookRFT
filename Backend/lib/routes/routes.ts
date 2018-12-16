@@ -48,7 +48,14 @@ export class Routes {
             .delete(this.authService.authenticate,
                 this.authService.getCurrentUser,
                 this.userActionController.deleteFavourite);
-
+        app.route('/comment')
+            .post(this.authService.authenticate,
+                this.authService.getCurrentUser,
+                this.userActionController.submitComment);
+        app.route('/comments')
+            .get(this.authService.authenticate,
+                this.authService.getCurrentUser,
+                this.userActionController.getComments);
         app.route('/auth/facebook')
             .post(passport.authenticate('facebook-token', {session: false}),
                 (req: Request, res: Response, next: Function) => {

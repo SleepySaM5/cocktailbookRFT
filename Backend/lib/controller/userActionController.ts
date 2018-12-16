@@ -3,8 +3,11 @@ import { Request, Response } from "express";
 import { FavouriteModel, FavouriteSchema } from "../model/favouriteModel";
 import { Cocktail } from "./cocktailController";
 import { CocktailModel } from "../model/cocktailModel";
+import { CommentSchema } from "../model/commentModel";
 
 export const Favourite = mongoose.model('Favourite', FavouriteSchema);
+export const Comment = mongoose.model('Comment', CommentSchema);
+
 
 export class UserActionController {
     public getFavourites(req: Request, res: Response) {
@@ -112,6 +115,33 @@ export class UserActionController {
                     res.json(favourite);
                 }
             });
+        });
+    }
+    public submitComment(req: Request, res: Response){
+        console.log(`Submitting comment!, ${JSON.stringify(req.body)}.`);
+        let user = req['user'];
+        let userId = user['_id'];
+        let newComment = new Comment({
+            content : req.body.commentContent,
+            cocktailId : req.body.cocktailId,
+            author : req.body.commentAuthor,
+            date: Date.now()
+        });
+        newComment.save((err, comment) => {
+            console.log('Saving the comment: ', comment);
+            if (err) {
+                res.send(err);
+            }
+            res.json(comment);
+        });
+    }
+    public getComments(req: Request, res: Response){
+        console.log("Getting the comments.");
+        Comment.find({}, (err, comments) => {
+            if (err) {
+                res.send(err);
+            }
+            res.json(comments);
         });
     }
 }
