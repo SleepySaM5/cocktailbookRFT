@@ -1,0 +1,9 @@
+app-home {
+  background-image: url('https://media.timeout.com/images/103426100/image.jpg');
+}
+
+.welcomeLoggedOut, .welcomeLoggedIn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

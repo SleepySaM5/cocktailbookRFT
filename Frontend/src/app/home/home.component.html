@@ -1,10 +1,16 @@
-<div class="loggedOut" *ngIf="!loggedIn">
-  <h1>
-    Welcome to the Cocktail Book!
-  </h1>
-</div>
-<div class="loggedIn" *ngIf="loggedIn">
-  <h1>
-    Welcome to the Cocktail Book, {{user.firstName}}!
-  </h1>
+<div class="background">
+  <div class="loggedOut" *ngIf="!loggedIn">
+    <div class="welcomeLoggedIn">
+      <h1>
+        Welcome to the Cocktail Book!
+      </h1>
+    </div>
+  </div>
+  <div class="loggedIn" *ngIf="loggedIn">
+    <div class="welcomeLoggedOut">
+      <h1>
+        Welcome to the Cocktail Book, {{user.firstName}}!
+      </h1>
+    </div>
+  </div>
 </div>
