@@ -17,14 +17,15 @@ export class CocktailPageComponent implements AfterViewInit {
 
   constructor( commentService: CocktailService, cocktailService: CocktailService) {
     cocktailService.getAllCocktails().subscribe((cocktails: Cocktail[]) => {
-      cocktails.forEach((cocktail) => console.log(cocktail.cocktailName));
+      cocktails.forEach((cocktail) => console.log(cocktail.name));
       console.log('got the cocktails: ', cocktails);
       this.cocktail = cocktails[0];
     });
+
     commentService.getAllComments().subscribe((comment: Comment[]) => {
       comment.forEach((cm) => console.log(cm));
       comment.forEach((cm) => {
-        if (cm.commentId === this.cocktail.cocktailID) {
+        if (cm.commentId === this.cocktail.id) {
           this.comments.push(cm);
         }
       });

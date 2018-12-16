@@ -36,6 +36,6 @@ export class CocktailCreateComponent implements OnInit {
   // upload() {
   //   console.log(this);
   //   this.cocktailService.addCocktail(this.cocktail);
-  //  // this.cocktail.cocktailName=
+  //  // this.cocktail.name=
   // }
 }

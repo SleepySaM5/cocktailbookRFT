@@ -33,7 +33,17 @@ export class CocktailService {
   }
 
   getAllCocktails(): Observable<Cocktail[]> {
-    return this.http.get<Cocktail[]>(backendURL + '/cocktail');
+    return this.http.get<any[]>(backendURL + '/cocktail')
+      .pipe((map((cocktails: any[]) => {
+        return cocktails.map((cocktail: any) =>
+          new Cocktail(
+            cocktail.cocktailName,
+            cocktail.ingredientList,
+            cocktail.description,
+            cocktail.imgPath,
+            cocktail.imgAlt,
+            cocktail._id));
+      })));
   }
 
   getAllIngredients(): Observable<Ingredient[]> {

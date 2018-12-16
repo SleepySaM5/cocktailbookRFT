@@ -7,7 +7,7 @@ export const Cocktail = mongoose.model('Cocktail', CocktailSchema);
 export class CocktailController {
 
     public addNewCocktail(req: Request, res: Response) {
-        console.log(`Addig new cocktail with params: ${req.body}.`);
+        console.log(`Adding new cocktail with params: ${req.body}.`);
         let newCocktail = new Cocktail(req.body);
 
         newCocktail.save((err, cocktail) => {
@@ -29,8 +29,8 @@ export class CocktailController {
     }
 
     public getCocktailWithID(req: Request, res: Response) {
-        console.log(`Getting cocktail with id: ${req.params.cocktailId}.`);
-        Cocktail.findById(req.params.cocktailID, (err, cocktail) => {
+        console.log(`Getting cocktail with id: ${req.params.id}.`);
+        Cocktail.findById(req.params.id, (err, cocktail) => {
             if (err) {
                 res.send(err);
             }

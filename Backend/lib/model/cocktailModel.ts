@@ -25,6 +25,7 @@ export const CocktailSchema = new Schema({
 });
 
 export interface CocktailModel {
+    id: string;
     cocktailName: string;
     ingredientList: string[],
     description: string,

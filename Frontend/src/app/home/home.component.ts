@@ -17,7 +17,7 @@ export class HomeComponent {
 
   constructor(service: CocktailService, private authService: UserService) {
     service.getAllCocktails().subscribe( (cocktails: Cocktail[]) => {
-      cocktails.forEach((cocktail) => console.log(cocktail.cocktailName));
+      cocktails.forEach((cocktail) => console.log(cocktail.name));
       this.cocktails = cocktails;
     });
 

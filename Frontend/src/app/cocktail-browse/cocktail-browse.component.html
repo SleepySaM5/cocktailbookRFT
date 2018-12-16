@@ -34,7 +34,10 @@
   <p class="error-text" *ngIf="errorText">{{errorText}}</p>
 </div>
 <div class="results">
-  <app-cocktail-list class="cocktail-list" [cocktails]="(searchResultCocktails && searchResultCocktails.length >= 1) ? searchResultCocktails : cocktails"></app-cocktail-list>
+  <app-cocktail-list class="cocktail-list"
+                     [showFavourites]="true"
+                     [favourites]="favourites"
+                     [cocktails]="(searchResultCocktails && searchResultCocktails.length >= 1) ? searchResultCocktails : cocktails"></app-cocktail-list>
   <button mat-button class="create-cocktail" (click)="addCocktail()">
     <mat-icon mat-button class="create-cocktail">add_circle</mat-icon>
   </button>

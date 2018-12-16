@@ -55,6 +55,11 @@ export class UserService {
     return null;
   }
 
+  getAuthHeaders(): Object  {
+    let header = {'x-auth-token': localStorage.getItem('id_token')};
+    return header;
+  }
+
   logout() {
     localStorage.removeItem('id_token');
   }
@@ -65,6 +70,7 @@ export class UserService {
 
   getCurrentUser(): Promise<User> {
     if (this.currentUser) {
+      console.log('Already had current user: ', this.currentUser);
       return Promise.resolve(this.currentUser);
     }
     const httpOptions = {
