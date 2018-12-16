@@ -76,6 +76,10 @@ in a browser. The project should be up and running :)
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
+## Assets
+
+Images used are downloaded from [unsplashed](unsplashed.com)
+
 ## Acknowledgments
 
 * Hat tip to anyone whose code was used
