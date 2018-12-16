@@ -1,11 +1,9 @@
 :host {
-  .comment-box {
-    margin: auto;
-    max-width: 850px;
     .comment{
       header {
         margin-bottom: 3px;
         display: flex;
+        flex-direction: row;
         font-weight: bold;
         .comment-user {
           flex-grow: 3;
@@ -17,5 +15,4 @@
         padding: 10px;
       }
     }
-  }
 }
