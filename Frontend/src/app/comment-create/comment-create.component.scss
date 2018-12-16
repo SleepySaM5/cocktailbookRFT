@@ -10,4 +10,23 @@
       width: 100%;
     }
   }
+  .comment-box {
+    margin: auto;
+    max-width: 850px;
+    .comment{
+      header {
+        margin-bottom: 3px;
+        display: flex;
+        font-weight: bold;
+        .comment-user {
+          flex-grow: 3;
+        }
+      }
+      .comment-content {
+        background-color: lightgray;
+        margin: 5px;
+        padding: 10px;
+      }
+    }
+  }
 }

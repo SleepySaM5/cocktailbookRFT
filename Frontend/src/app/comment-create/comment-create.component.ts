@@ -17,6 +17,9 @@ export class CommentCreateComponent implements OnInit {
   @Input()
   cocktail: Cocktail;
 
+  comments: Comment[] = [];
+  commented: boolean;
+
   comment: Comment;
   today = new Date();
   user: User;
@@ -46,8 +49,9 @@ export class CommentCreateComponent implements OnInit {
         formatDate(this.today, 'dd-MM-yyyy hh:mm:ss', 'en-US', ),
         this.commentForm.value.commentContent ,
         this.user.firstName + ' ' + this.user.lastName);
-      console.log(this.comment);
-      this.commentService.addComment(this.comment);
+      this.comments.push(this.comment);
+      this.commented = true;
+      this.commentService.addComment(this.comment).subscribe(() => {});
   }
 
 }
