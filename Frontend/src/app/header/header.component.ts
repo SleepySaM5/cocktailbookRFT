@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { MatDialog } from '@angular/material';
 import { PopupComponent } from '../popup/popup.component';
+import { PopupService } from "../services/popup.service";
+import { Popup } from "../models/popup.model";
 
 @Component({
   selector: 'app-header',
@@ -15,7 +17,8 @@ export class HeaderComponent implements OnInit {
   public user = null;
 
   constructor(private authService: UserService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private popupService: PopupService) {
     this.authService.isLoggedIn().then((loggedIn) => {
       this.loggedIn = loggedIn;
       if (loggedIn) {
@@ -30,6 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onPopupClick(): void {
+    this.popupService.openDialogWith(new Popup('Something went wrong :(', 'Could not log in! Please try again later!'));
     this.dialog.open(PopupComponent);
   }
 
@@ -38,7 +42,12 @@ export class HeaderComponent implements OnInit {
   }
 
   onLoginClick(): void {
-    this.authService.facebookLogin();
+    this.authService.facebookLogin()
+      .then(() => console.log('logged in'))
+      .catch(() => {
+        this.popupService.openDialogWith(new Popup('Something went wrong :(', 'Could not log in! Please try again later!'))
+        this.dialog.open(PopupComponent);
+      });
   }
 
   onLogoutClick(): void {
