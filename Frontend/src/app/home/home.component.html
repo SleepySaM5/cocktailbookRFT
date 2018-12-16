@@ -1,16 +1,21 @@
-<div class="background">
-  <div class="loggedOut" *ngIf="!loggedIn">
-    <div class="welcomeLoggedIn">
-      <h1>
-        Welcome to the Cocktail Book!
-      </h1>
-    </div>
+<div class="loggedOut" *ngIf="!loggedIn">
+  <div class="welcomeLoggedIn">
+    <h1>
+      Welcome to the Cocktail Book!
+    </h1>
   </div>
-  <div class="loggedIn" *ngIf="loggedIn">
-    <div class="welcomeLoggedOut">
-      <h1>
-        Welcome to the Cocktail Book, {{user.firstName}}!
-      </h1>
-    </div>
+  <div class="getStarted">
+    <button mat-raised-button (click)="getStarted()">Get started!</button>
   </div>
 </div>
+<div class="loggedIn" *ngIf="loggedIn">
+  <div class="welcomeLoggedOut">
+    <h1>
+      Welcome to the Cocktail Book, {{user.firstName}}!
+    </h1>
+  </div>
+  <div class="getStarted">
+    <button mat-raised-button (click)="getStarted()">Get started!</button>
+  </div>
+</div>
+

@@ -1,8 +1,12 @@
-app-home {
-  background-image: url('https://media.timeout.com/images/103426100/image.jpg');
+.welcomeLoggedOut, .welcomeLoggedIn {
+  display: flex;
+  margin-top: 640px;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
-.welcomeLoggedOut, .welcomeLoggedIn {
+.getStarted {
   display: flex;
   align-items: center;
   justify-content: center;
