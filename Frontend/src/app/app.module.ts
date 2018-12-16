@@ -31,8 +31,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { CocktailCreateComponent } from './cocktail-create/cocktail-create.component';
 import { CocktailCommentComponent } from './cocktail-comment/cocktail-comment.component';
+import { CommentCreateComponent } from './comment-create/comment-create.component';
 import { FavouriteComponent } from './favourite/favourite.component';
-// import { NewCocktailComponent } from './new-cocktail/new-cocktail.component';
 
 @NgModule({
   declarations: [
@@ -47,8 +47,9 @@ import { FavouriteComponent } from './favourite/favourite.component';
     CocktailBrowseComponent,
     CocktailCommentComponent,
     CocktailCreateComponent,
+    CommentCreateComponent,
     FavouriteComponent,
-    // NewCocktailComponent
+
   ],
   imports: [
     BrowserAnimationsModule,

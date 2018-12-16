@@ -1,0 +1,13 @@
+:host {
+  .new-comment-form {
+    margin: auto;
+    width: 850px;
+    display: flex;
+    flex-direction: column;
+    .comment-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+}

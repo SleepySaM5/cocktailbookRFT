@@ -24,7 +24,7 @@ export class CocktailPageComponent implements AfterViewInit {
     commentService.getAllComments().subscribe((comment: Comment[]) => {
       comment.forEach((cm) => console.log(cm));
       comment.forEach((cm) => {
-        if (cm.commentId === this.cocktail.cocktailID) {
+        if (cm.cocktailId === this.cocktail.cocktailID) {
           this.comments.push(cm);
         }
       });

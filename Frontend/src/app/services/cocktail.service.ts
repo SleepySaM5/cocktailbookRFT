@@ -63,4 +63,11 @@ export class CocktailService {
       );
   }
 
+  addComment(comment: Comment): Observable<Comment> {
+    console.log(comment);
+    return this.http.post<Comment>(this.URL + '/comment', comment)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 }
