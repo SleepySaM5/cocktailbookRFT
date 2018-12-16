@@ -1,0 +1,6 @@
+<div class="favourites" *ngIf="(cocktails && cocktails.length > 0)">
+  <app-cocktail-list class="cocktail-list" [cocktails]="cocktails"></app-cocktail-list>
+</div>
+<div class="favourites-empty" *ngIf="(cocktails.length == 0)">
+  <h1>You have not added any cocktails to your favourites!</h1>
+</div>
