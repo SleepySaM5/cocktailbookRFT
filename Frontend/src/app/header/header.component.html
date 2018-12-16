@@ -11,6 +11,7 @@
     <span class="fill-space"></span>
     <div class="login-button" *ngIf="!loggedIn">
       <button mat-raised-button (click)="onLoginClick()">Login with Facebook</button>
+      <button mat-raised-button (click)="onPopupClick()">Test popup</button>
     </div>
     <div class="login-button" *ngIf="loggedIn">
       <span>Hello, {{user.firstName}}!</span>

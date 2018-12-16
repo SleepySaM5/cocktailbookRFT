@@ -32,6 +32,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CocktailCreateComponent } from './cocktail-create/cocktail-create.component';
 import { CocktailCommentComponent } from './cocktail-comment/cocktail-comment.component';
 import { FavouriteComponent } from './favourite/favourite.component';
+import { PopupComponent } from './popup/popup.component';
 // import { NewCocktailComponent } from './new-cocktail/new-cocktail.component';
 
 @NgModule({
@@ -48,6 +49,7 @@ import { FavouriteComponent } from './favourite/favourite.component';
     CocktailCommentComponent,
     CocktailCreateComponent,
     FavouriteComponent,
+    PopupComponent,
     // NewCocktailComponent
   ],
   imports: [
@@ -78,6 +80,9 @@ import { FavouriteComponent } from './favourite/favourite.component';
   providers: [
     CocktailService,
     UserService
+  ],
+  entryComponents: [
+    PopupComponent
   ],
   bootstrap: [AppComponent]
 })

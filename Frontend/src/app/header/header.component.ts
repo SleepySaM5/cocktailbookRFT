@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { MatDialog } from '@angular/material';
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +14,8 @@ export class HeaderComponent implements OnInit {
   public loggedIn: boolean;
   public user = null;
 
-  constructor(private authService: UserService) {
+  constructor(private authService: UserService,
+              public dialog: MatDialog) {
     this.authService.isLoggedIn().then((loggedIn) => {
       this.loggedIn = loggedIn;
       if (loggedIn) {
@@ -24,6 +27,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onPopupClick(): void {
+    this.dialog.open(PopupComponent);
   }
 
   onSidenavButtonClick(): void {
