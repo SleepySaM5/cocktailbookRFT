@@ -65,7 +65,7 @@ export class CocktailService {
 
   addComment(comment: Comment): Observable<Comment> {
     console.log(comment);
-    return this.http.post<Comment>(this.URL + '/comment', comment)
+    return this.http.post<Comment>(backendURL + '/comment', comment)
       .pipe(
         catchError(this.handleError)
       );
