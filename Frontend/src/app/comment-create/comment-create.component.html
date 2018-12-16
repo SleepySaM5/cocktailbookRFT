@@ -11,3 +11,8 @@
 <div class="new-comment-form-disabled" *ngIf="!loggedIn" >
   <p>If you want to add your comment, please log in first.</p>
 </div>
+<div *ngIf="commented">
+  <div *ngFor="let comment of comments" class="comment-box">
+    <app-cocktail-comment class="comment" [comment]="comment"></app-cocktail-comment>
+  </div>
+</div>

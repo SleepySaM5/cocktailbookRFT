@@ -1,19 +1,17 @@
 <mat-card class="mat-elevation-z4">
 
   <mat-card-header class="card-header">
-    <mat-card-title style="margin-bottom: 6px"
-                    class="card-header-text">{{cocktail.name | titlecase}}</mat-card-title>
-    <mat-card-actions *ngIf="showFavourite" class="card-header-action">
-      <mat-icon (click)="toggleFavourite()" *ngIf="!isFavorite">star_border</mat-icon>
-      <mat-icon (click)="toggleFavourite()" *ngIf="isFavorite">star</mat-icon>
-      <button mat-button></button>
-      <mat-icon>share</mat-icon>
-      <button mat-button></button>
+    <mat-card-title style="margin-bottom: 6px" class="card-header-text">{{cocktail.name | titlecase}}</mat-card-title>
+    <mat-card-actions class="card-header-action">
+      <mat-icon (click)="toggleFavourite()" *ngIf="!favouriteService.isFavourite">star_border</mat-icon>
+      <mat-icon (click)="toggleFavourite()" *ngIf="favouriteService.isFavourite">star</mat-icon>
     </mat-card-actions>
   </mat-card-header>
   <div class="image-container">
     <img mat-card-image [src]="cocktail ? cocktail.imgPath : fallBackPath" [alt]="cocktail.imgAlt">
   </div>
-  <mat-card-content>{{cocktail.ingredientList}}</mat-card-content>
+  <mat-card-content>
+    <span *ngFor="let ingredient of cocktail.ingredientList"><b>&middot;</b> {{ingredient}} </span> <b>&middot;</b>
+  </mat-card-content>
 
 </mat-card>

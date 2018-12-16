@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { clientID } from '../../../../config/constants';
+import { Subject } from "rxjs";
 
 declare const FB: any;
 
@@ -15,8 +16,9 @@ export interface User {
 @Injectable()
 export class UserService {
 
+  public loginFinished: Subject<boolean>;
   readonly URL = 'https://localhost:3000';
-  private currentUser: User;
+  public currentUser: User;
 
   constructor(private http: HttpClient) {
     this.currentUser = null;
@@ -27,14 +29,14 @@ export class UserService {
       xfbml: false,
       version: 'v2.8'
     });
+
+    this.loginFinished = new Subject();
   }
 
-  facebookLogin(): Promise<void> {
+  async facebookLogin(): Promise<void> {
     return FB.login((loginResponse) => {
       if (loginResponse.authResponse) {
         return this.login(loginResponse.authResponse);
-      } else {
-        return Promise.resolve(null);
       }
     }, {scope: 'public_profile, email'});
   }
@@ -42,11 +44,13 @@ export class UserService {
   login(authResponse): Promise<void> {
     return this.http.post(this.URL + '/auth/facebook', {access_token: authResponse.accessToken}, {observe: 'response'})
       .toPromise()
-      .then((response: HttpResponse<Object>) => {
+      .then(async(response: HttpResponse<Object>) => {
         const token = response.headers.get('x-auth-token');
         if (token) {
           localStorage.setItem('id_token', token);
         }
+        await this.getCurrentUser();
+        this.loginFinished.next(true);
       });
   }
 
@@ -82,7 +86,7 @@ export class UserService {
 
     return this.http.get(this.URL + '/auth/me', httpOptions)
       .toPromise().then((response: Response) => {
-        'Current'
+        'Current';
         this.currentUser = new User(response['email'], response['firstName'], response['lastName']);
         return this.currentUser;
     }).catch(() => {
