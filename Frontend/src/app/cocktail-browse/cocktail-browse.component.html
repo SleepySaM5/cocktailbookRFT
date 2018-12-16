@@ -35,7 +35,7 @@
 </div>
 <div class="results">
   <app-cocktail-list class="cocktail-list"
-                     [showFavourites]="true"
+                     [showFavourites]="showFavourites"
                      [favourites]="favourites"
                      [cocktails]="(searchResultCocktails && searchResultCocktails.length >= 1) ? searchResultCocktails : cocktails"></app-cocktail-list>
   <button mat-button class="create-cocktail" (click)="addCocktail()">

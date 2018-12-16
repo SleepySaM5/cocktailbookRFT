@@ -1,4 +1,4 @@
-<mat-card class="mat-elevation-z4">
+<mat-card class="mat-elevation-z4" *ngIf="cocktail">
 
   <mat-card-header class="card-header">
     <div mat-card-avatar class="example-header-image"></div>
@@ -30,7 +30,6 @@
 
 
 </mat-card>
-
 <div *ngFor="let comment of comments" class="comment-box">
   <app-cocktail-comment class="comment" [comment]="comment"></app-cocktail-comment>
 </div>
