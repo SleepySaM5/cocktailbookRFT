@@ -7,10 +7,11 @@ export const Cocktail = mongoose.model('Cocktail', CocktailSchema);
 export class CocktailController {
 
     public addNewCocktail(req: Request, res: Response) {
-        console.log(`Adding new cocktail with params: ${req.body}.`);
+        console.log(`Adding new cocktail with params: ${JSON.stringify(req.body)}.`);
         let newCocktail = new Cocktail(req.body);
 
         newCocktail.save((err, cocktail) => {
+            console.log('Saving the cocktail: ', cocktail);
             if (err) {
                 res.send(err);
             }

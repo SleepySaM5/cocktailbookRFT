@@ -19,9 +19,6 @@
         <input matInput type="text" id="ingredients" name="ingredients" placeholder="Ingredients" formControlName="ingredients" required>
         <mat-hint>Please the ingredients separated by a single comma</mat-hint>
       </mat-form-field>
-      <!--<div *ngIf="ingredients.errors">-->
-      <!--Wrong form-->
-      <!--</div>-->
       <button mat-button type="submit" [disabled]="!cocktailForm.valid">Upload</button>
     </form>
   </mat-card>

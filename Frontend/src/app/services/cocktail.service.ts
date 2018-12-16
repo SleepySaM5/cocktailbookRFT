@@ -37,7 +37,7 @@ export class CocktailService {
       .pipe((map((cocktails: any[]) => {
         return cocktails.map((cocktail: any) =>
           new Cocktail(
-            cocktail.cocktailName,
+            cocktail.name,
             cocktail.ingredientList,
             cocktail.description,
             cocktail.imgPath,
@@ -73,4 +73,11 @@ export class CocktailService {
       );
   }
 
+  addComment(comment: Comment): Observable<Comment> {
+    console.log(comment);
+    return this.http.post<Comment>(backendURL + '/comment', comment)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 }

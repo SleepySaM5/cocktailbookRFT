@@ -88,7 +88,7 @@ export class FavouriteService {
     return this.http.get<Cocktail[]>(backendURL + '/favourites', httpOptions)
       .pipe(map((favourites: any[]) => {
         this.favourites = favourites.map((cocktail: any) => new Cocktail(
-          cocktail.cocktailName,
+          cocktail.name,
           cocktail.ingredientList,
           cocktail.description,
           cocktail.imgPath,
