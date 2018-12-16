@@ -14,10 +14,35 @@
         <mat-label>Cocktail Image</mat-label>
         <input matInput type="url" id="image" placeholder="Image url" formControlName="img" required>
       </mat-form-field>
+
       <mat-form-field appearance="outline">
         <mat-label>Cocktail Ingredient List</mat-label>
-        <input matInput type="text" id="ingredients" name="ingredients" placeholder="Ingredients" formControlName="ingredients" required>
-        <mat-hint>Please the ingredients separated by a single comma</mat-hint>
+        <mat-chip-list #chipList>
+          <mat-chip
+            *ngFor="let ing of activeIngredients"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(ing)">
+            {{ing}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="Add ingredient..."
+            #ingredientInput
+            [formControl]="ingredientCtrl"
+            formControlName="ingredients"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            name="ingredients"
+            (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let ing of filteredIngredients | async" [value]="ing">
+            {{ing}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
       <!--<div *ngIf="ingredients.errors">-->
       <!--Wrong form-->

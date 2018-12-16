@@ -52,7 +52,7 @@ export class CommentCreateComponent implements OnInit {
       console.log(this.comment);
       this.comments.push(this.comment);
       this.commented = true;
-      this.commentService.addComment(this.comment);
+      this.commentService.addComment(this.comment).subscribe(() => {});
   }
 
 }
