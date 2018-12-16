@@ -8,95 +8,99 @@ export const Favourite = mongoose.model('Favourite', FavouriteSchema);
 
 export class UserActionController {
     public getFavourites(req: Request, res: Response) {
-        console.log('Getting favourites: ');
-        Favourite.findOne({userId: req.params.userID}, (err, favourite: FavouriteModel) => {
-            if (err) {
-                res.send(err);
-            }
+        let user = req['user'];
+        console.log('Getting favourites for user', req['user']);
+        if (!user) {
+            res.send('No such user');
+        } else {
+            Favourite.findOne({userId: user['_id']}, (err, favourite: any) => {
+                if (err) {
+                    res.send(err);
+                }
 
-            console.log('Found the  favourite: ,', favourite);
-
-            if (!favourite) {
-                res.json([]);
-            } else {
-                res.json(favourite.cocktailList);
-            }
-        })
+                console.log('Found the  favourite: ', favourite);
+                if (!favourite) {
+                    res.json([]);
+                } else {
+                    res.json(favourite.cocktailList);
+                }
+            })
+        }
     }
 
     public async addCocktailToFavorites(req: Request, res: Response) {
         let options = {upsert: true};
-        let cocktailId = req.params.cocktailID;
-        let userId = req.params.userID;
+        let cocktailId = req.params.id;
+        let user = req['user'];
+        let userId = user['_id'];
         let cocktailToAdd: CocktailModel;
 
-        await Cocktail.findById(req.params.cocktailID, (err, cocktail: CocktailModel) => {
-            if (err || !cocktail) {
+        console.log('Adding cocktail to favourites user:', user);
 
-                console.error(`No cocktail with id: ${cocktailId} found!`);
-                res.send(err);
-                return;
-            }
-            cocktailToAdd = cocktail;
-        });
+        if (!cocktailId) {
+            res.status(404).send('No cocktailId!');
+        } else {
 
-        console.log('Found cocktail to add: ', cocktailToAdd);
-        Favourite.findOne({userId: userId}, (err, favourite:any) => {
-            console.log('Found one favourite: ', favourite);
-            if (err) {
-                console.error(`Error on finding favourite for userId: ${userId}.`);
-                res.send(err);
-            }
+            await Cocktail.findById(cocktailId, (err, cocktail: CocktailModel) => {
+                if (err || !cocktail) {
 
-            if (!favourite) {
-                console.log(`Favourite for userId: ${userId} didn't exist yet, initializing.`);
-                favourite = new Favourite({userId: userId, cocktailList: [cocktailToAdd]});
-
-            } else {
-                console.log(`Favourite for userId: ${userId} existed, adding cocktail: ${cocktailToAdd.cocktailName}`);
-                console.log(`index of is ${cocktailToAdd.cocktailName}: `, favourite.cocktailList.indexOf(cocktailToAdd));
-                //todo check by reference
-                if (favourite.cocktailList.indexOf(cocktailToAdd) === -1 ) {
-                    favourite.cocktailList.push(cocktailToAdd);
+                    console.error(`No cocktail with id: ${cocktailId} found!`);
+                    res.send(err);
+                    return;
                 } else {
-                    console.log('Apparently was included? ', favourite.cocktailList);
+                    console.log('cocktailToAdd = ', cocktail);
+                    cocktailToAdd = cocktail;
                 }
-                console.log('Favourite existed, cocktail list is now: ', favourite.cocktailList);
-            }
-
-            console.log('Saving favourite like: ', favourite);
-            favourite.save((error, savedFavourite) => {
-                console.log('Saving: ', savedFavourite);
-                if (error) {
-                    console.error(error);
-                    res.send('Error while saving favourites!');
-                }
-                res.json(savedFavourite);
             });
-        });
-    }
 
+            console.log('Found cocktail to add: ', cocktailToAdd);
+            if (!cocktailToAdd) {
+                res.send('No such cocktail found!');
+                return
+            }
+            Favourite.findOne({userId: userId}, (err, favourite: any) => {
+                console.log('Found one favourite: ', favourite);
+                if (err) {
+                    console.error(`Error on finding favourite for userId: ${userId}.`);
+                    res.send(err);
+                    return;
+                }
+                if (!favourite) {
+                    favourite = new Favourite({userId: userId, cocktailList: [cocktailToAdd]});
+
+                } else {
+                    if (!favourite.cocktailList.find((cocktail) => cocktail.id === cocktailToAdd.id)) {
+                        favourite.cocktailList.push(cocktailToAdd);
+                    }
+                }
+                favourite.save((error, savedFavourite) => {
+                    if (error) {
+                        console.error(error);
+                        res.send('Error while saving favourites!');
+                    } else {
+                        res.json(savedFavourite);
+                    }
+                });
+            });
+        }
+    }
 
     public deleteFavourite(req: Request, res: Response) {
         let options = {upsert: true, new: true};
-        let cocktailId = req.params.cocktailID;
-        let userId = req.params.userID;
-        console.log(`Deleting favourite cocktail with id ${cocktailId} on ${userId}`);
+        let cocktailId = req.params.id;
+        let user = req['user'];
+        let userId = user['_id'];
+        console.log(`Deleting favourite cocktail with id ${cocktailId} on ${user}`);
 
-        Favourite.findOne({userId: userId}, options, (err, favourite:any) => {
+        Favourite.findOne({userId: user['_id']}, (err, favourite: any) => {
             if (err) {
                 res.send(err);
             }
-            console.log('Found one favourite: ', favourite);
 
             if (!favourite) {
-                console.log(`Favourite for userId: ${userId} didn't exist yet, initializing.`);
                 favourite = new Favourite({userId: userId, cocktailList: []});
             } else if (favourite.cocktailList) {
-                console.log(`Favourite for userId: ${userId} existed, removing cocktail: ${cocktailId}`);
-                console.log(`Favourite for userId: ${userId} existed: favourite`);
                 favourite.cocktailList = favourite.cocktailList.filter((cocktail) => cocktail.id !== cocktailId);
-                console.log('Filtered cocktail list is: ', favourite.cocktailList);
             }
 
             favourite.save((error) => {
@@ -104,9 +108,9 @@ export class UserActionController {
                     console.log(`Error while saving favourite for ${userId}`);
                     console.error(error);
                     res.send('Error while saving favourites!');
+                } else {
+                    res.json(favourite);
                 }
-                res.json(favourite);
-
             });
         });
     }

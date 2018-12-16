@@ -45,11 +45,10 @@ export class CommentCreateComponent implements OnInit {
   }
 
   onSubmit() {
-      this.comment = new Comment(this.cocktail.cocktailID,
-        formatDate(this.today, 'dd-MM-yyyy hh:mm', 'en-US', ),
+      this.comment = new Comment(this.cocktail.id.toString(),
+        formatDate(this.today, 'dd-MM-yyyy hh:mm:ss', 'en-US', ),
         this.commentForm.value.commentContent ,
         this.user.firstName + ' ' + this.user.lastName);
-      console.log(this.comment);
       this.comments.push(this.comment);
       this.commented = true;
       this.commentService.addComment(this.comment).subscribe(() => {});
