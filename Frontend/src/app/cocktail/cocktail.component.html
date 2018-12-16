@@ -14,6 +14,8 @@
   <div class="image-container">
     <img mat-card-image [src]="cocktail ? cocktail.imgPath : fallBackPath" [alt]="cocktail.imgAlt">
   </div>
-  <mat-card-content>{{cocktail.ingredientList}}</mat-card-content>
+  <mat-card-content>
+    <ul *ngFor="let ingredient of cocktail.ingredientList">{{ingredient}}</ul>
+  </mat-card-content>
 
 </mat-card>
