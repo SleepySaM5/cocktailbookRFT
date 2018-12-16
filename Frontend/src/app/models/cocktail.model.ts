@@ -6,7 +6,7 @@ export class Cocktail {
     public description: string,
     public imgPath?: string,
     public imgAlt?: string,
-    public cocktailID?: number) {
+    public cocktailID?: string) {
 
   }
 }

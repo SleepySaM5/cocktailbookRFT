@@ -1,9 +1,13 @@
-<div class="new-comment-form">
+<div class="new-comment-form" *ngIf="loggedIn">
   <p>Add new comment</p>
-  <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="comment-content">
     <mat-form-field class="comment-content" >
-      <textarea matInput placeholder="Leave a comment" formControlName="commentContent"></textarea>
+      <textarea matInput placeholder="Leave a comment" formControlName="commentContent" ></textarea>
     </mat-form-field>
     <button mat-button type="submit" [disabled]="!commentForm.valid">Submit comment</button>
   </form>
+</div>
+
+<div class="new-comment-form-disabled" *ngIf="!loggedIn" >
+  <p>If you want to add your comment, please log in first.</p>
 </div>
