@@ -16,10 +16,14 @@ export class Routes {
     }
 
     public routes(app: Application): void {
+        app.route('*').all((req: Request, res: Response, next: Function) => {
+            console.log('Request happened: ', req.url);
+            next()
+        });
         app.route('/')
             .get((req: Request, res: Response) => {
                 res.status(200).send({
-                    message: 'GET request successfulll!!!!'
+                    message: 'GET request successfully!'
                 })
             });
         app.route('/cocktail')
@@ -28,16 +32,28 @@ export class Routes {
             .get(this.cocktailController.getCocktails);
         app.route('/cocktail/filter')
             .get(this.cocktailController.filterCocktails);
-        app.route('/cocktail/:cocktailID')
+        app.route('/cocktail/:id')
             .get(this.cocktailController.getCocktailWithID)
             .put(this.cocktailController.updateCocktail)
             .delete(this.cocktailController.deleteCocktail);
+        app.route('/favourites')
+            .get(this.authService.authenticate,
+                (req: Request, res: Response, next: Function) => this.authService.getCurrentUser(req, res, next),
+                this.userActionController.getFavourites);
+        app.route('/favourites/:id')
+
+            .post(this.authService.authenticate,
+                this.authService.getCurrentUser,
+                this.userActionController.addCocktailToFavorites)
+            .delete(this.authService.authenticate,
+                this.authService.getCurrentUser,
+                this.userActionController.deleteFavourite);
 
         app.route('/auth/facebook')
             .post(passport.authenticate('facebook-token', {session: false}),
                 (req: Request, res: Response, next: Function) => {
                     if (!req['user']) {
-                        return res.status(401).send('User Not Authenticated');
+                        res.status(401).send('User Not Authenticated');
                     }
                     req['auth'] = {
                         id: req['user'].id
@@ -53,11 +69,6 @@ export class Routes {
                 (req: Request, res: Response, next: Function) => this.authService.getCurrentUser(req, res, next),
                 (req: Request, res: Response) => this.authService.getOne(req, res));
 
-        app.route('/user/:userID/favourites')
-            .get(this.userActionController.getFavourites);
-        app.route('/user/:userID/favourites/:cocktailID')
-            .post(this.userActionController.addCocktailToFavorites)
-            .delete(this.userActionController.deleteFavourite);
     }
 }
 

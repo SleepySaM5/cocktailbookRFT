@@ -42,7 +42,7 @@ export class CommentCreateComponent implements OnInit {
   }
 
   onSubmit() {
-      this.comment = new Comment(this.cocktail.cocktailID,
+      this.comment = new Comment(this.cocktail.id.toString(),
         formatDate(this.today, 'dd-MM-yyyy hh:mm:ss', 'en-US', ),
         this.commentForm.value.commentContent ,
         this.user.firstName + ' ' + this.user.lastName);

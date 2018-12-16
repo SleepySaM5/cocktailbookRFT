@@ -9,6 +9,7 @@ import { MatAutocomplete, MatChipInputEvent } from '@angular/material';
 import { map, startWith } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/typings/esm5/autocomplete';
 import { Router } from '@angular/router';
+import { FavouriteService } from "../services/favourite.service";
 
 
 @Component({
@@ -19,6 +20,7 @@ import { Router } from '@angular/router';
 export class CocktailBrowseComponent implements AfterViewInit {
 
   cocktails: Cocktail[];
+  favourites: Cocktail[];
   searchResultCocktails: Cocktail[];
   errorText: string;
 
@@ -36,13 +38,24 @@ export class CocktailBrowseComponent implements AfterViewInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor(private cocktailService: CocktailService,
+              private favouriteService: FavouriteService,
               ingredientService: CocktailService,
               private router: Router) {
     cocktailService.getAllCocktails().subscribe((cocktails: Cocktail[]) => {
-      cocktails.forEach((cocktail) => console.log(cocktail.cocktailName));
+      cocktails.forEach((cocktail) => console.log(cocktail.name));
       console.log('got the cocktails: ', cocktails);
       this.cocktails = cocktails;
     });
+
+    favouriteService.getAllFavourites().subscribe((favourites) => {
+        this.favourites = favourites;
+    });
+
+    favouriteService.favouritesSubject.subscribe((favourites) => {
+      console.log('Got favourites from subject');
+      this.favourites = favourites;
+    });
+
     cocktailService.getAllIngredients().subscribe((ingredients: Ingredient[]) => {
       // @ts-ignore
       this.allIngredients = ingredients.map((ingredient) => ingredient);
@@ -50,7 +63,6 @@ export class CocktailBrowseComponent implements AfterViewInit {
     this.filteredIngredients = this.ingredientCtrl.valueChanges.pipe(
       startWith(null),
       map((ingredient: string | null) => ingredient ? this._filter(ingredient) : this.allIngredients.slice()));
-
   }
 
   ngAfterViewInit() {

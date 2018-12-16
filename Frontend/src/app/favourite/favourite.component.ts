@@ -21,15 +21,21 @@ export class FavouriteComponent implements AfterViewInit {
   constructor(private cocktailService: CocktailService,
               ingredientService: CocktailService,
               favouriteService: FavouriteService) {
-    cocktailService.getAllCocktails().subscribe((cocktails: Cocktail[]) => {
-      cocktails.forEach((cocktail) => console.log(cocktail.cocktailName));
+
+    favouriteService.getAllFavourites().subscribe((cocktails: Cocktail[]) => {
+      cocktails.forEach((cocktail) => console.log(cocktail.name));
+      console.log('Got the favourites: ', cocktails);
+      this.cocktails = cocktails;
+    });
+    /*cocktailService.getAllCocktails().subscribe((cocktails: Cocktail[]) => {
+      cocktails.forEach((cocktail) => console.log(cocktail.name));
       console.log('got the cocktails: ', cocktails);
       this.cocktails = cocktails;
     });
     cocktailService.getAllIngredients().subscribe((ingredients: Ingredient[]) => {
       // @ts-ignore
       this.allIngredients = ingredients.map((ingredient) => ingredient);
-    });
+    });*/
   }
 
   ngAfterViewInit() {

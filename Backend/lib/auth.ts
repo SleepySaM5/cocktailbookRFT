@@ -16,20 +16,18 @@ export class AuthService {
     };
 
     sendToken(req: Request, res: Response): void {
-        console.log('onThe send token: ', req['token']);
         res.set('x-auth-token', req['token']);
-        console.log('Response header is now? ', res.getHeaderNames());
         res.status(200).json(req['auth']);
     };
 
     authenticate(req: Request, res: Response, next: Function): void {
-        console.log('in authenticate: ');
+        console.log('Authenticating request to ', req.url);
         jwt.verify(req.headers['x-auth-token'], jwtSecret, (err, decoded) => {
-            if(err) {
-                console.log('Err: ', err);
+            if (err) {
+                console.log('Error: Unauthenticated: ');
                 res.status(401).send('Unauthenticated!');
             } else {
-                console.log('Was decoded, hah! ', decoded);
+                console.log('Successfully authenticated request!');
                 req['auth'] = decoded;
                 next();
             }
@@ -37,8 +35,9 @@ export class AuthService {
     }
 
     getCurrentUser(req, res, next) : any{
-        console.log('getting current user: ', req.auth.id);
-       return User.findById(req.auth.id, (err, user) => {
+        console.log('Finding current user on request', req.url);
+        console.log('Request auth-id ', req.auth.id);
+        User.findById(req.auth.id, (err, user) => {
             if (err) {
                 console.log('An error happened: ', err);
                 next(err);
@@ -52,7 +51,7 @@ export class AuthService {
 
     getOne(req: Request, res: Response) {
         let user = req['user'];
-        if(user){
+        if (user){
             delete user['facebookProvider'];
             delete user['__v'];
         }

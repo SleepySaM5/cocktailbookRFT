@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const CocktailSchema = new Schema({
-    cocktailName: {
+    name: {
         type: String,
         required: 'Enter a cocktail name!'
     },
@@ -25,7 +25,8 @@ export const CocktailSchema = new Schema({
 });
 
 export interface CocktailModel {
-    cocktailName: string;
+    id: string;
+    name: string;
     ingredientList: string[],
     description: string,
     createdDate: Date
