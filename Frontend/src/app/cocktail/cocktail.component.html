@@ -6,16 +6,13 @@
     <mat-card-actions class="card-header-action">
       <mat-icon (click)="toggleFavourite()" *ngIf="!favouriteService.isFavourite">star_border</mat-icon>
       <mat-icon (click)="toggleFavourite()" *ngIf="favouriteService.isFavourite">star</mat-icon>
-      <button mat-button></button>
-      <mat-icon>share</mat-icon>
-      <button mat-button></button>
     </mat-card-actions>
   </mat-card-header>
   <div class="image-container">
     <img mat-card-image [src]="cocktail ? cocktail.imgPath : fallBackPath" [alt]="cocktail.imgAlt">
   </div>
   <mat-card-content>
-    <ul *ngFor="let ingredient of cocktail.ingredientList">{{ingredient}}</ul>
+    <span *ngFor="let ingredient of cocktail.ingredientList"><b>&middot;</b> {{ingredient}} </span> <b>&middot;</b>
   </mat-card-content>
 
 </mat-card>
