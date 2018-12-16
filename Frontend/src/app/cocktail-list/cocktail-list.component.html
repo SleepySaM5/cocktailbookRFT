@@ -1,5 +1,9 @@
 <div class="cocktail-list-display">
   <div *ngFor="let cocktail of cocktails" class="cocktail-card">
-      <app-cocktail class="cocktail" [cocktail]="cocktail"></app-cocktail>
+      <app-cocktail class="cocktail"
+                    [cocktail]="cocktail"
+                    [showFavourite]="showFavourites"
+                    [isFavorite]="isFavourite(cocktail)"
+      ></app-cocktail>
   </div>
 </div>

@@ -29,13 +29,13 @@ export class CocktailCreateComponent implements OnInit {
   onSubmit() {
     console.log(this.cocktailForm.value);
     this.cocktail = new Cocktail(this.cocktailForm.value.name, this.cocktailForm.value.ingredients,
-      this.cocktailForm.value.img, this.cocktailForm.value.desc);
+      this.cocktailForm.value.desc, this.cocktailForm.value.img, this.cocktailForm.value.name);
     console.log(this.cocktail);
     this.cocktailService.addCocktail(this.cocktail).subscribe(() => {});
   }
   // upload() {
   //   console.log(this);
   //   this.cocktailService.addCocktail(this.cocktail);
-  //  // this.cocktail.cocktailName=
+  //  // this.cocktail.name=
   // }
 }

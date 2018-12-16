@@ -21,8 +21,6 @@ export class UserController {
                         token: accessToken
                     }
                 });
-                console.log('No such user, making one! ', profile);
-
                 newUser.save((error, savedUser) => {
                     console.log('On save: ', savedUser);
                     if (error) {
@@ -30,7 +28,7 @@ export class UserController {
                     }
                     return cb(error, savedUser);
                 });
-                console.log('Was saved. I think.');
+                console.log('User saved.');
             } else {
                 console.log('Was a user already.');
                 return cb(err, user);
