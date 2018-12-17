@@ -62,8 +62,9 @@ in a browser. The project should be up and running :)
 
 ## Built With
 
-* [Angular CLI](https://cli.angular.io/) - The web framework used
+* [Angular](https://cli.angular.io/) - The web framework used
 * [Node.js](https://maven.apache.org/) - Build tool
+* [MongoLab](https://mlab.com) - Database
 * [Trello](https://rometools.github.io/rome/) - Task management
 
 ## Authors
