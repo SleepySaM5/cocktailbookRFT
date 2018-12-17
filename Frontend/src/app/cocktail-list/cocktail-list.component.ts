@@ -15,10 +15,10 @@ export class CocktailListComponent {
   favourites: Cocktail[];
 
   @Input()
-  showFavourites: boolean = false;
+  showFavourites = false;
 
   isFavourite(cocktail: Cocktail): boolean {
-    if(this.favourites) {
+    if (this.favourites) {
       return !!this.favourites.find((favouriteCocktail) => favouriteCocktail.id === cocktail.id);
     } else {
       return false;
