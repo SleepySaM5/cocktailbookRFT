@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Cocktail } from '../models/cocktail.model';
 import { CocktailService } from '../services/cocktail.service';
 import { Comment } from '../models/comment.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +25,8 @@ export class CocktailPageComponent implements AfterViewInit, OnInit {
 
   constructor( private commentService: CocktailService,
                private cocktailService: CocktailService,
-               private route: ActivatedRoute) {
+               private route: ActivatedRoute,
+               private router: Router) {
     /*
     cocktailService.getAllCocktails().subscribe((cocktails: Cocktail[]) => {
       cocktails.forEach((cocktail) => console.log(cocktail.name));
@@ -57,6 +58,10 @@ export class CocktailPageComponent implements AfterViewInit, OnInit {
         console.log('success');
       });
     });
+  }
+
+  back(): void {
+    this.router.navigate(['/browse']);
   }
 
 }
