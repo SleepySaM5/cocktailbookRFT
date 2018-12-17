@@ -35,14 +35,14 @@ export class CocktailPageComponent implements AfterViewInit, OnInit {
     });
     */
 
-    commentService.getAllComments().subscribe((comment: Comment[]) => {
-      comment.forEach((cm) => console.log(cm));
-      comment.forEach((cm: Comment) => {
+    commentService.getAllComments().subscribe((comments: Comment[]) => {
+      comments.forEach((cm) => console.log(cm));
+      comments.forEach((cm: Comment) => {
         if (cm.cocktailId === this.cocktail.id.toString()) {
           this.comments.push(cm);
         }
       });
-      console.log('got the comments: ', comment);
+      console.log('got the comments: ', comments);
     });
   }
 

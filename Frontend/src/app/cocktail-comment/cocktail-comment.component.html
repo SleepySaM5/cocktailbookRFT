@@ -4,7 +4,8 @@
       <span class="comment-user">
         {{comment.commentAuthor}}
       </span>
-      <span class="comment-date">{{comment.commentDate}}</span>
+      <span class="comment-date">{{comment.commentDate |  date:'medium'}}</span>
+
     </header>
     <p>{{comment.commentContent}}</p>
   </div>

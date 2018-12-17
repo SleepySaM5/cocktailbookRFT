@@ -1,3 +1,9 @@
+<div *ngIf="commented">
+  <div *ngFor="let comment of comments" class="comment-box">
+    <app-cocktail-comment class="comment" [comment]="comment"></app-cocktail-comment>
+  </div>
+</div>
+
 <div class="new-comment-form" *ngIf="loggedIn">
   <p>Add new comment</p>
   <form [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="comment-content">
@@ -11,8 +17,4 @@
 <div class="new-comment-form-disabled" *ngIf="!loggedIn" >
   <p>If you want to add your comment, please log in first.</p>
 </div>
-<div *ngIf="commented">
-  <div *ngFor="let comment of comments" class="comment-box">
-    <app-cocktail-comment class="comment" [comment]="comment"></app-cocktail-comment>
-  </div>
-</div>
+

@@ -1,4 +1,5 @@
 :host {
+
   .new-comment-form {
     margin: auto;
     width: 850px;
@@ -28,5 +29,9 @@
         padding: 10px;
       }
     }
+  }
+  .new-comment-form-disabled{
+    max-width: 850px;
+    margin: auto;
   }
 }

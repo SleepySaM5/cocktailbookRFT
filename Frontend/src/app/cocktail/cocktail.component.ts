@@ -26,6 +26,8 @@ export class CocktailComponent implements OnInit {
               private router: Router) {  }
 
   ngOnInit() {
+    console.log('Favourites is: ', this.isFavorite);
+    console.log('Show is: ', this.showFavourite);
   }
 
   toggleFavourite(): void {
