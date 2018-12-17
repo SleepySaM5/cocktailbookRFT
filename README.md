@@ -78,7 +78,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Assets
 
-Images used are downloaded from [unsplashed](unsplashed.com)
+Images used are downloaded from [unsplash](https://unsplash.com/)
 
 ## Acknowledgments
 
