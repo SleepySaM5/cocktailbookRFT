@@ -15,14 +15,14 @@ export class CocktailListComponent implements OnChanges {
   favourites: Cocktail[];
 
   @Input()
-  showFavourites: boolean = false;
+  showFavourites = false;
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('Favourites changed: ', this.favourites);
   }
 
   isFavourite(cocktail: Cocktail): boolean {
-    if(this.favourites) {
+    if (this.favourites) {
       return !!this.favourites.find((favouriteCocktail) => favouriteCocktail.id === cocktail.id);
     } else {
       return false;

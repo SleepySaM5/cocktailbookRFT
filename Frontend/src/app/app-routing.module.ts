@@ -10,10 +10,9 @@ import { FavouriteComponent } from './favourite/favourite.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'cocktail/:id', component: CocktailComponent },
+  { path: 'cocktail/:id', component: CocktailPageComponent },
   { path: 'browse', component: CocktailBrowseComponent },
   { path: 'favourite', component: FavouriteComponent },
-  { path: 'page', component: CocktailPageComponent },
   { path: 'create', component: CocktailCreateComponent}
 ];
 

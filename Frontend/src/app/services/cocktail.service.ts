@@ -57,6 +57,10 @@ export class CocktailService {
     );
   }
 
+  getCocktailById(cocktailId: number): Observable<Cocktail> {
+    return this.http.get<Cocktail>(backendURL + '/cocktail/' + cocktailId);
+  }
+
   search(ingredients: string[]): Observable<Cocktail[]> {
     return this.http.get<Cocktail[]>(backendURL + '/cocktail/filter?ingredients=' + ingredients);
   }

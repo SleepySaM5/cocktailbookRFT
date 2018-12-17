@@ -1,7 +1,8 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Cocktail } from '../models/cocktail.model';
 import { CocktailService } from '../services/cocktail.service';
 import { Comment } from '../models/comment.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -9,18 +10,30 @@ import { Comment } from '../models/comment.model';
   templateUrl: './cocktail-page.component.html',
   styleUrls: ['./cocktail-page.component.scss']
 })
-export class CocktailPageComponent implements AfterViewInit {
+export class CocktailPageComponent implements AfterViewInit, OnInit {
   fallBackImgPath = 'assets/ginTonic.jpeg';
 
-  cocktail: Cocktail;
-  comments: Comment[] = [];
+  cocktail = new Cocktail('',
+    [''],
+    '',
+    '',
+    '',
+    0);
+  comments: Comment[];
 
-  constructor( commentService: CocktailService, cocktailService: CocktailService) {
+  private sub: any;
+
+  constructor( private commentService: CocktailService,
+               private cocktailService: CocktailService,
+               private route: ActivatedRoute,
+               private router: Router) {
+    /*
     cocktailService.getAllCocktails().subscribe((cocktails: Cocktail[]) => {
       cocktails.forEach((cocktail) => console.log(cocktail.name));
       console.log('got the cocktails: ', cocktails);
       this.cocktail = cocktails[0];
     });
+    */
 
     commentService.getAllComments().subscribe((comments: Comment[]) => {
       comments.forEach((cm) => console.log(cm));
@@ -34,5 +47,21 @@ export class CocktailPageComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void { }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      console.log('ng on init');
+      this.cocktail.id = params['id'];
+      console.log('setting params');
+      this.cocktailService.getCocktailById(this.cocktail.id).subscribe(cocktail => {
+        this.cocktail = cocktail;
+        console.log('success');
+      });
+    });
+  }
+
+  back(): void {
+    this.router.navigate(['/browse']);
+  }
 
 }
