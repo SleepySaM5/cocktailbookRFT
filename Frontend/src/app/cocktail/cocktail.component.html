@@ -1,7 +1,7 @@
 <mat-card class="mat-elevation-z4">
 
   <mat-card-header class="card-header">
-    <mat-card-title style="margin-bottom: 6px" class="card-header-text">{{cocktail.name | titlecase}}</mat-card-title>
+    <mat-card-title style="margin-bottom: 6px" class="card-header-text" (click)="navigateToCocktailPage()">{{cocktail.name | titlecase}}</mat-card-title>
     <mat-card-actions class="card-header-action" *ngIf="showFavourite">
       <mat-icon (click)="toggleFavourite()" *ngIf="!isFavorite">star_border</mat-icon>
       <mat-icon (click)="toggleFavourite()" *ngIf="isFavorite">star</mat-icon>

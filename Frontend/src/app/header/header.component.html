@@ -9,12 +9,12 @@
     </button>
     The Cocktail Book
     <span class="fill-space"></span>
-    <div class="login-button" *ngIf="!loggedIn">
-      <button mat-raised-button (click)="onLoginClick()">Login with Facebook</button>
+    <div *ngIf="!loggedIn">
+      <button class="login-button" mat-raised-button (click)="onLoginClick()">Login with Facebook</button>
     </div>
-    <div class="login-button" *ngIf="loggedIn">
+    <div *ngIf="loggedIn">
       <span>Hello, {{user.firstName}}!</span>
-      <button mat-raised-button (click)="onLogoutClick()">Logout</button>
+      <button class="logout-button" mat-raised-button (click)="onLogoutClick()">Logout</button>
     </div>
   </mat-toolbar>
 </header>
